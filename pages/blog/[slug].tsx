@@ -16,7 +16,7 @@ const BlogTemplate = (props) => {
 export async function getStaticProps({ params }) {
   const contentDirectory = path.join(process.cwd(), 'content');
   const dataDirectory = path.join(process.cwd(), 'data');
-  const files = glob.sync('content/blog/*.*.md');
+  const files = glob.sync('content/blog/*.md');
   const contentMatter = {};
 
   return {

@@ -7,7 +7,7 @@ import glob from 'glob';
 const Home = (props) => {
   const { config } = props;
 
-  return <Layout config={props.config}></Layout>;
+  return <Layout config={props.config}>Hello, world!</Layout>;
 };
 
 export async function getStaticProps({ params }) {
