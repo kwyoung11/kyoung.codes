@@ -2,9 +2,10 @@ import dynamic from 'next/dynamic';
 import React, { useState } from 'react';
 import Head from 'next/head';
 
-const CMS = dynamic(
-  () =>
-    import('netlify-cms-app').then((cms) => {
+const CMS: any = dynamic(
+  // @ts-ignore
+  () => {
+    return import('netlify-cms-app').then((cms: any) => {
       cms.init();
       // cms.registerPreviewTemplate("<input collection here>", withStyled(YourComponent));
       cms.registerEditorComponent({
@@ -28,7 +29,8 @@ const CMS = dynamic(
           );
         },
       });
-    }),
+    });
+  },
   { ssr: false },
 );
 

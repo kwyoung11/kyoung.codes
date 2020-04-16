@@ -3,23 +3,18 @@ import Layout from '../src/components/Layout';
 import { BlogPost } from '../src/components/BlogPost/BlogPost';
 import path from 'path';
 import glob from 'glob';
-import jdown from 'jdown';
 
 const Home = (props) => {
   const { config } = props;
 
-  return (
-    <Layout config={props.config}>
-      <BlogPost post={{}} />
-    </Layout>
-  );
+  return <Layout config={props.config}></Layout>;
 };
 
 export async function getStaticProps({ params }) {
   const contentDirectory = path.join(process.cwd(), 'content');
   const dataDirectory = path.join(process.cwd(), 'data');
 
-  const files = glob.sync('content/blog/*.*.md');
+  const files = glob.sync('content/blog/*.md');
   const contentMatter = {};
 
   return {
@@ -30,21 +25,5 @@ export async function getStaticProps({ params }) {
   };
 }
 
-export async function getStaticPaths() {
-  const routes = [];
-  const blogPosts = await jdown('./content/blog');
-  const files = glob.sync('content/recipes/*.*.md');
-
-  // add each blog to the routes obj
-  Object.entries(blogPosts).forEach(([filename, fileContent]) => {
-    const filen = filename.replace(/([a-z][A-Z])/g, function (g) {
-      return g[0] + '-' + g[1].toLowerCase();
-    });
-  });
-  return {
-    paths: routes,
-    fallback: false,
-  };
-}
-
+// @ts-ignore
 export default Home;

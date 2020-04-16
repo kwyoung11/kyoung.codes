@@ -29,8 +29,8 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const routes = [];
-  const blogPosts = await jdown('./content/recipes');
-  const files = glob.sync('content/recipes/*.*.md');
+  const blogPosts = await jdown('./content/blog');
+  const files = glob.sync('content/blog/*.md');
 
   // add each blog to the routes obj
   Object.entries(blogPosts).forEach(([filename, fileContent]) => {

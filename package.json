@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "node scripts/process-config-yaml.js && next build && node scripts/generate-sitemap.js && next export",
     "test": "jest --coverage",
     "test:ci": "jest --ci",
     "lint": "eslint --color --ignore-path .gitignore \"{{pages,src}/**/,}*.{js,jsx,ts,tsx}\"",
@@ -24,7 +25,8 @@
     "react-markdown": "^4.3.1",
     "styled-components": "^5.1.0",
     "styled-media-query": "^2.1.2",
-    "styled-normalize": "^8.0.7"
+    "styled-normalize": "^8.0.7",
+    "js-yaml": "latest"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
