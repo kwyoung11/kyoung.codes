@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export const MdImageComponent = (props) => {
+export const MdImage = (props) => {
   return (
     <ImageWrapper>
       <img src={props.src} alt={props.alt} title={props.title} />

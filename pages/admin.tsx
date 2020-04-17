@@ -35,10 +35,15 @@ const CMS: any = dynamic(
 );
 
 const Admin = () => {
+  React.useEffect(() => {
+    document.getElementById('__next').style.height = 'auto';
+  }, []);
+
   return (
     <>
       <Head>
         <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        <script src="/netlify_identity_redirect_scripts.js" />
       </Head>
       <CMS />
     </>

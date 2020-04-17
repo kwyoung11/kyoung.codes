@@ -39,6 +39,59 @@ export const responsiveMargin = css`
 
 export const GlobalStyle = createGlobalStyle`
   body p {
-    font-family: 'Vollkorn', serif;
+    //font-family: 'Vollkorn', serif;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
+    color: #777;
+  }
+  html, body, #__next {
+    height: 100%;
+  }
+  
+  a.heading {
+    text-decoration: none;
+    color: #444;
+    border-bottom: 2px solid #eee;
+    transition: border-bottom-color 0.5s ease;
+    &:hover {
+      border-bottom: 2px solid ${(props) => props.theme.colors.primary};
+      border-bottom-color: ${(props) => props.theme.colors.secondary};
+    }
+  }
+  
+  .heading1 {
+    font-size: 3em;
+    font-weight: bold;
+  }
+  
+  .heading2 {
+    font-size: 2.25em;
+    font-weight: bold;
+  }
+  
+  .body1 {
+    font-size: 1.25em;
+    letter-spacing: 0.3px;
+    line-height: 1.82rem;
+    -webkit-font-smoothing: antialiased;
+    color: #222;
+    text-rendering: optimizeLegibility;
+  }
+  
+  .body2 {
+    font-size: 1em;
+    letter-spacing: 0.3px;
+    line-height: 1.42rem;
+    -webkit-font-smoothing: antialiased;
+    color: #222;
+    text-rendering: optimizeLegibility;
+  }
+  
+  .subtitle1 {
+    font-size: 0.9em;
+    font-style: italic;
+  }
+  .subtitle2 {
+    font-size: 0.8em;
+    font-weight: bold;
   }
 `;

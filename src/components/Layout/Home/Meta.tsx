@@ -1,7 +1,10 @@
 import Head from 'next/head';
 import React from 'react';
+import { MetaProps } from '../../../types';
 
-export default function Meta(props) {
+const Meta: React.FC<MetaProps> = (props) => {
+  const { config, pageTitle } = props;
+
   return (
     <>
       <Head>
@@ -10,14 +13,14 @@ export default function Meta(props) {
         <meta name="language" content="en" />
         {props.pageTitle ? (
           <title>
-            {props.pageTitle} - {props.config.title}
+            {props.pageTitle} - {config.title}
           </title>
         ) : (
           <title>
-            {props.config.title} - {props.config.shortDescription}
+            {config.title} - {config.shortDescription}
           </title>
         )}
-        <meta name="description" content={props.config.description} />
+        <meta name="description" content={config.description} />
         <link
           href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;1,200&display=swap"
           rel="stylesheet"
@@ -37,4 +40,6 @@ export default function Meta(props) {
       </Head>
     </>
   );
-}
+};
+
+export default Meta;

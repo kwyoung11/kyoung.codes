@@ -2,61 +2,66 @@ import * as React from 'react';
 import ReactMarkdown from 'react-markdown/with-html';
 import Link from 'next/link';
 import styled from 'styled-components';
-import { MdImageComponent } from './MdImageComponent';
+import { MdImage } from './MdImage';
 import { media } from '../../themes/styleHelpers';
+import { reformatDate } from '../../util/helpers';
 
-interface BlogPostProps {
-  post: any;
+interface TagProps {
+  name: string;
 }
 
-export const BlogPost: React.FC<BlogPostProps> = (props: BlogPostProps) => {
+interface PostProps {
+  title: string;
+  content: string;
+  date: string;
+  slug: string;
+  tags: TagProps[];
+  thumbnail: string;
+}
+
+interface BlogPostProps {
+  post: PostProps;
+}
+
+export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
   const { post } = props;
 
-  function reformatDate(fullDate: any) {
-    const date = new Date(fullDate);
-    return date.toDateString().slice(4);
-  }
-
-  const Tags = () => {
+  const tags = () => {
     if (!post.tags) {
       return null;
     }
-    return post.tags.map((tag, i) => {
-      return (
-        <Link key={i} href="/tags/[tagname]" as={`/tags/${tag.name}`}>
-          <a>
-            <i>
-              {tag.name}
-              {i === post.tags.length - 1 ? `` : <>,&nbsp;</>}
-            </i>
-          </a>
-        </Link>
-      );
-    });
+    return post.tags.map((tag, i) => (
+      <Link key={i} href="/tags/[tagname]" as={`/tags/${tag.name}`}>
+        <a>
+          <i>
+            {tag.name}
+            {i === post.tags.length - 1 ? `` : <>,&nbsp;</>}
+          </i>
+        </a>
+      </Link>
+    ));
   };
 
   return (
     <BlogWrapper>
       <Hero className="blog_hero">
-        <img src={`${post.thumbnail}`} alt={post.title} />
+        {post.thumbnail ? <img src={`${post.thumbnail}`} alt={post.title} /> : null}
       </Hero>
       <BlogInfo className="blog__info">
-        <h3>{post.title}</h3>
-        <p className="subtitle2">{reformatDate(post.date)}</p>
+        <h3 className="heading1">{post.title}</h3>
+        <p className="subtitle1">{reformatDate(post.date)}</p>
       </BlogInfo>
       <BlogBody className="blog__body">
         <p className="body1">
           <ReactMarkdown
-            source={post.body}
-            renderers={{ image: MdImageComponent }}
+            source={post.content}
+            renderers={{ image: MdImage }}
             className="markdown"
             escapeHtml={false}
           />
         </p>
       </BlogBody>
-      <BlogFooter className="blog__footer">
-        <Tags />
-      </BlogFooter>
+      <BlogFooter className="blog__footer">{tags}</BlogFooter>
     </BlogWrapper>
   );
 };
@@ -66,6 +71,7 @@ const BlogWrapper = styled.article`
   ${media.lessThan('md')`
         padding: 0;
     `};
+  width: 100%;
 `;
 
 const Hero = styled.figure`
