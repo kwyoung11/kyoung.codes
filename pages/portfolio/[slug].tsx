@@ -6,7 +6,7 @@ import { parseEntry } from '../../src/util/helpers';
 import fs from 'fs';
 import { Post } from '../../src/components/Blog/Post';
 
-const BlogTemplate = (props) => {
+const PortfolioTemplate = (props) => {
   return (
     <BlogPostLayout config={props.config}>
       <Post post={props.post} />
@@ -46,4 +46,4 @@ export async function getStaticPaths() {
   };
 }
 
-export default BlogTemplate;
+export default PortfolioTemplate;

@@ -1,17 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Footer } from './Footer';
-import { lighten } from 'polished';
 
 export const Sidebar: React.FC = (props) => {
   return (
     <StyledSidebar className="sidebar">
       <img src="/img/kevin.png" />
       <div className="blurb">
-        <p className="body2">
-          Full Stack developer specializing in front-end javascript development. Contributor
-          @netlify-cms. UMD CS '16
-        </p>
+        <p className="body2">I build great experiences. Contributor @netlify-cms. UMD CS '16</p>
       </div>
       <Footer />
     </StyledSidebar>
@@ -25,7 +21,7 @@ const StyledSidebar = styled.div`
   justify-items: center;
   padding: 0 1em;
   position: relative;
-  // border-right: 1px solid ${(props) => lighten(0.2)(props.theme.colors.grey)};
+
   img {
     border-radius: 50%;
     max-width: 100%;
@@ -37,8 +33,15 @@ const StyledSidebar = styled.div`
     align-self: start;
     text-align: center;
     margin: 0.5em 1.5em;
+    color: #454545;
+    font-size: 1.25em;
+    p {
+      line-height: 1em;
+      letter-spacing: 0.2px;
+    }
     width: 75%;
   }
+
   &:after {
     position: absolute;
     background: linear-gradient(180deg, #fff, #e6e6e6 25%, #e6e6e6 75%, #fff);

@@ -41,3 +41,11 @@ collections:
         widget: "object"
         fields:
           - {label: "Locale-specific tag", name: "localetag", widget: "list", fields: [{label: "Locale", name: "locale", widget: "select", options: ["en", "es"], default: ["en"]}, {label: "Name", name: "name", widget: "string"}]}
+  - name: "about"
+    label: "About Me"
+    folder: "content/about"
+    preview_path: "about"
+    create: true
+    fields: # The fields for each document, usually in front matter
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Body", name: "body", widget: "markdown"}

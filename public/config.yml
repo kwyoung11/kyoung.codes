@@ -97,3 +97,15 @@ collections:
               - label: Name
                 name: name
                 widget: string
+  - name: about
+    label: About Me
+    folder: content/about
+    preview_path: about
+    create: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Body
+        name: body
+        widget: markdown

@@ -67,11 +67,11 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
 };
 
 const BlogWrapper = styled.article`
-  padding: 0em 3em 0em 0em;
-  ${media.lessThan('md')`
-        padding: 0;
-    `};
-  width: 100%;
+  padding: 0em 0em 0em 0em;
+  .heading1 {
+    padding-top: 0;
+    margin-top: 0;
+  }
 `;
 
 const Hero = styled.figure`
@@ -87,7 +87,7 @@ const Hero = styled.figure`
 `;
 
 const BlogInfo = styled.div`
-  padding: 1.5rem 0rem;
+  padding: 0rem 0rem;
   text-align: center;
   h3 {
     margin-bottom: 10px;

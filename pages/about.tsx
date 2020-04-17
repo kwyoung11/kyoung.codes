@@ -1,21 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BlogPostLayout } from '../src/components/Layout/BlogPost/BlogPostLayout';
+import { parseEntry } from '../src/util/helpers';
+import fs from 'fs';
+import path from 'path';
+import ReactMarkdown from 'react-markdown';
 
 const About = (props) => {
+  const { aboutEntries } = props;
+  const aboutEntry = aboutEntries[0];
+  console.log('About', aboutEntries);
   return (
     <BlogPostLayout>
       <StyledAbout>
+        <h3 className="heading1">{aboutEntry.title}</h3>
         <p className="body1">
-          Ever since 2009 I've been building various websites and learning how HTML/CSS and PHP
-          work. In college, I built activeterps.com, a social fitness app for college students,
-          using Ruby on Rails. After graduating in 2012 with a degree in Kinesiology, I had taken
-          three online CS MOOC's (Stanford CS150X, HarvardCS and BerkeleyCS) before I decided I may
-          as well scratch my itch and go back to UMD to get a CS degree. I learned a ton, attended
-          hackathons, worked for the Maryland Institute of Advanced Computer Studies as web
-          developer, built some really cool passion projects (here and here). After college, I
-          worked at Perfect Sense, then founded Strengthify. I now do freelance consulting work and
-          contribute to OSS projects (Netlify CMS, next-netlify-cms-starter) in my spare time.
+          <ReactMarkdown source={aboutEntry.content} />
         </p>
       </StyledAbout>
     </BlogPostLayout>
@@ -23,8 +23,36 @@ const About = (props) => {
 };
 
 const StyledAbout = styled.div`
-  margin-top: 100px;
   max-width: 75%;
+  .heading1 {
+    padding-top: 0;
+    margin-top: 0;
+  }
 `;
+
+export async function getStaticProps({ params }) {
+  const contentDirectory = path.join(process.cwd(), 'content');
+  const dataDirectory = path.join(process.cwd(), 'data');
+
+  let aboutEntries = fs.readdirSync(`${contentDirectory}/about`);
+  aboutEntries = aboutEntries.map((filename) => {
+    const filePath = path.join(`${contentDirectory}/about`, filename);
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    return parseEntry(filename.split('.')[0], fileContents);
+  });
+
+  aboutEntries = aboutEntries.sort((a: any, b: any) => {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
+
+  const config = JSON.parse(fs.readFileSync(`${dataDirectory}/config.json`, 'utf8'));
+  console.log('About..', aboutEntries);
+  return {
+    props: {
+      config: config,
+      aboutEntries: aboutEntries,
+    },
+  };
+}
 
 export default About;

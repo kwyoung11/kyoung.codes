@@ -13,7 +13,7 @@ export const BlogPostLayout = (props) => {
       <div>
         <MdArrowBack size={'2em'} className="back" onClick={handleGoBack} />
       </div>
-      {props.children}
+      <Content>{props.children}</Content>
     </StyledBlogPostLayout>
   );
 };
@@ -25,12 +25,12 @@ const StyledBlogPostLayout = styled.div`
 
   & > div {
     justify-self: center;
+    margin-top: 3em;
   }
   .back {
     cursor: pointer;
     display: flex;
     justify-content: center;
-    margin-top: 3em;
     padding: 0.5em;
     border-radius: 50%;
     color: ${(props) => darken(0.2)(props.theme.colors.grey)};
@@ -39,4 +39,8 @@ const StyledBlogPostLayout = styled.div`
       color: ${(props) => darken(0.4)(props.theme.colors.grey)};
     }
   }
+`;
+
+const Content = styled.div`
+  margin-top: 3em;
 `;
