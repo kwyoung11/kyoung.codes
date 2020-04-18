@@ -1,6 +1,7 @@
 ---
 title: Quality Food Recipes
 date: 2020-04-17T06:02:06.169Z
+thumbnail: /img/screen-shot-2020-04-18-at-4.18.25-pm.png
 description: Multi-lingual food blog built with Next.js and React. Custom
   comments module built with Firebase.
 link: https://qualityfoodrecipes.com
