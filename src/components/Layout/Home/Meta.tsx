@@ -8,6 +8,17 @@ const Meta: React.FC<MetaProps> = (props) => {
   return (
     <>
       <Head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39228168-7"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+  
+            gtag('config', 'UA-39228168-7');`,
+          }}
+        />
+
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <meta charSet="utf-8" />
         <meta name="language" content="en" />

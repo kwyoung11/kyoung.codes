@@ -8,17 +8,19 @@ import { BlogPostLayout } from '../../src/components/Layout/BlogPost/BlogPostLay
 import Link from 'next/link';
 
 const PortfolioIndex = (props) => {
+  const { portfolioEntries: entries } = props;
+
   return (
     <BlogPostLayout>
       <StyledPortfolioIndex>
-        {props.portfolioEntries.map((pf) => (
+        {entries.map((pfe) => (
           <PortfolioCard>
-            <Link href="/portfolio/[slug]" as={`/portfolio/${pf.slug}`}>
-              <a className="heading title">{pf.title}</a>
+            <Link href="/portfolio/[slug]" as={`/portfolio/${pfe.slug}`}>
+              <a className="heading title">{pfe.title}</a>
             </Link>
-            <img src={pf.thumbnail} />
+            <img src={pfe.thumbnail} />
             <p className="body1">
-              <ReactMarkdown source={pf.description} />
+              <ReactMarkdown source={pfe.description} />
             </p>
           </PortfolioCard>
         ))}

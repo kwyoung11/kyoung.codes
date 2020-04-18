@@ -7,9 +7,11 @@ import fs from 'fs';
 import { Post } from '../../src/components/Blog/Post';
 
 const PortfolioTemplate = (props) => {
+  const { config, post } = props;
+
   return (
-    <BlogPostLayout config={props.config}>
-      <Post post={props.post} />
+    <BlogPostLayout config={config}>
+      <Post post={post} />
     </BlogPostLayout>
   );
 };

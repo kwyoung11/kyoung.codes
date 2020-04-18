@@ -72,5 +72,4 @@ const Blog = styled.div`
   }
 `;
 
-// @ts-ignore
 export default Home;
