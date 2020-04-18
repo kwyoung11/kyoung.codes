@@ -1,25 +1,63 @@
 import React from 'react';
 import styled from 'styled-components';
+import { IoIosArrowRoundForward } from 'react-icons/io';
 
-export const Footer = (props) => {
-  return (
-    <StyledFooter className="footer">
+export const Footer = () => (
+  <StyledFooter className="footer">
+    <Links>
       <a className="heading" href={'https://github.com/kwyoung11'}>
         Github
       </a>
       <a className="heading" href={'https://linkedin.com/in/kevwy'}>
         Linkedin
       </a>
-    </StyledFooter>
-  );
-};
+    </Links>
+    <Source>
+      Built with React and Next.js.{' '}
+      <a className="heading">
+        View Source <IoIosArrowRoundForward />{' '}
+      </a>
+    </Source>
+  </StyledFooter>
+);
 
 const StyledFooter = styled.div`
   display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+`;
+
+const Links = styled.div`
+  display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   a {
     margin: 0 20px;
     letter-spacing: 0.5px;
+  }
+`;
+
+const Source = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: 0.75rem;
+  color: ${(props) => props.theme.colors.grey};
+  a {
+    color: ${(props) => props.theme.colors.grey} !important;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.75rem;
+    margin: 0 20px;
+    letter-spacing: 0.5px;
+    transition: color 0.5s ease;
+    &:hover {
+      color: ${(props) => props.theme.fonts.bodyColor} !important;
+    }
   }
 `;

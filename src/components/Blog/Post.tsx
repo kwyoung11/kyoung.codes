@@ -3,14 +3,13 @@ import ReactMarkdown from 'react-markdown/with-html';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { MdImage } from './MdImage';
-import { media } from '../../themes/styleHelpers';
 import { reformatDate } from '../../util/helpers';
 
-interface TagProps {
+export interface TagProps {
   name: string;
 }
 
-interface PostProps {
+export interface PostProps {
   title: string;
   content: string;
   date: string;

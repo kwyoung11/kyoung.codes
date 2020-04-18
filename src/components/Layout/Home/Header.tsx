@@ -9,11 +9,8 @@ export const Header = (props) => {
       <Link href={'/portfolio'}>
         <a className="heading">Portfolio</a>
       </Link>
-      <Link href={'/'}>
-        <a className="heading">Blog</a>
-      </Link>
       <Link href={'/about'}>
-        <a className="heading">About</a>
+        <a className="heading">About Me</a>
       </Link>
     </StyledHeader>
   );

@@ -12,8 +12,8 @@ const Home = (props) => {
   return (
     <Layout config={config}>
       <Blog>
-        {props.posts.map((post) => (
-          <div>
+        {props.posts.map((post, index) => (
+          <div key={index}>
             <div className="date">{reformatDate(post.date)}</div>
             <Link href={'/blog/[slug]'} as={`/blog/${post.slug}`}>
               <a>{post.title}</a>

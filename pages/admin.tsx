@@ -8,6 +8,7 @@ const CMS: any = dynamic(
     return import('netlify-cms-app').then((cms: any) => {
       cms.init();
       // cms.registerPreviewTemplate("<input collection here>", withStyled(YourComponent));
+
       cms.registerEditorComponent({
         id: 'youtube',
         label: 'Youtube',

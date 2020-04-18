@@ -2,17 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import { Footer } from './Footer';
 
-export const Sidebar: React.FC = (props) => {
-  return (
-    <StyledSidebar className="sidebar">
-      <img src="/img/kevin.png" />
-      <div className="blurb">
-        <p className="body2">I build great experiences. Contributor @netlify-cms. UMD CS '16</p>
-      </div>
-      <Footer />
-    </StyledSidebar>
-  );
-};
+export const Sidebar: React.FC = () => (
+  <StyledSidebar className="sidebar">
+    <img src="/img/kevin.png" />
+    <div className="blurb">
+      <p className="body2">I build great experiences. Contributor @netlify-cms. UMD CS '16</p>
+    </div>
+    <Footer />
+  </StyledSidebar>
+);
 
 const StyledSidebar = styled.div`
   display: grid;
@@ -34,9 +32,9 @@ const StyledSidebar = styled.div`
     text-align: center;
     margin: 0.5em 1.5em;
     color: #454545;
-    font-size: 1.25em;
+    font-size: 1.15em;
     p {
-      line-height: 1em;
+      line-height: 1.45em;
       letter-spacing: 0.2px;
     }
     width: 75%;

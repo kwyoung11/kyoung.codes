@@ -9,7 +9,7 @@ import ReactMarkdown from 'react-markdown';
 const About = (props) => {
   const { aboutEntries } = props;
   const aboutEntry = aboutEntries[0];
-  console.log('About', aboutEntries);
+
   return (
     <BlogPostLayout>
       <StyledAbout>
@@ -46,7 +46,7 @@ export async function getStaticProps({ params }) {
   });
 
   const config = JSON.parse(fs.readFileSync(`${dataDirectory}/config.json`, 'utf8'));
-  console.log('About..', aboutEntries);
+
   return {
     props: {
       config: config,

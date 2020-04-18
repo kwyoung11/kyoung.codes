@@ -67,7 +67,7 @@ export async function getStaticProps({ params }) {
   });
 
   portfolioEntries = portfolioEntries.sort((a: any, b: any) => {
-    return new Date(b.date).getTime() - new Date(a.date).getTime();
+    return new Date(a.date).getTime() - new Date(b.date).getTime();
   });
 
   const config = JSON.parse(fs.readFileSync(`${dataDirectory}/config.json`, 'utf8'));

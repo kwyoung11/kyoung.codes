@@ -4,9 +4,15 @@ import jdown from 'jdown/dist';
 import { BlogPostLayout } from '../../src/components/Layout/BlogPost/BlogPostLayout';
 import { parseEntry } from '../../src/util/helpers';
 import fs from 'fs';
-import { Post } from '../../src/components/Blog/Post';
+import { Post, PostProps } from '../../src/components/Blog/Post';
+import { ConfigProps } from '../../src/types';
 
-const BlogTemplate = (props) => {
+interface BlogTemplateProps {
+  config: ConfigProps;
+  post: PostProps;
+}
+
+const BlogTemplate: React.FC<BlogTemplateProps> = (props) => {
   return (
     <BlogPostLayout config={props.config}>
       <Post post={props.post} />

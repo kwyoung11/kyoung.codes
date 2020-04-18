@@ -8,6 +8,9 @@ export const theme = {
     white: '#fff',
     black: '#333',
   },
+  fonts: {
+    bodyColor: '#454545',
+  },
 };
 
 export const ThemeContext = React.createContext(theme);
