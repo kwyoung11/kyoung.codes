@@ -14,7 +14,7 @@ export const SidebarLinks = () => (
     </Links>
     <Source>
       Built with React and Next.js.{' '}
-      <a className="heading">
+      <a className="heading" href="https://github.com/kwyoung11/kyoung.codes">
         View Source <IoIosArrowRoundForward />{' '}
       </a>
     </Source>
