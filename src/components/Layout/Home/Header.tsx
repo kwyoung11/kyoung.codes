@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { lighten } from 'polished';
+import { media } from '../../../themes/styleHelpers';
 
 export const Header = () => (
   <StyledHeader className="header">
@@ -14,12 +14,19 @@ export const Header = () => (
   </StyledHeader>
 );
 
-const StyledHeader = styled.div`
+const StyledHeader = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  // border-bottom: 1px solid ${(props) => lighten(0.2)(props.theme.colors.grey)};
   position: relative;
+  padding: 2rem 0;
+
+  // ${media.greaterThan('md')`
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   position: relative;
+  // `};
 
   a {
     margin: 0 20px;

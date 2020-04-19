@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { MdArrowBack } from 'react-icons/md';
 import { lighten, darken } from 'polished';
+import { media } from '../../../themes/styleHelpers';
 
 export const BlogPostLayout = (props) => {
   const handleGoBack = () => {
@@ -10,9 +11,9 @@ export const BlogPostLayout = (props) => {
 
   return (
     <StyledBlogPostLayout>
-      <div>
+      <BackIcon>
         <MdArrowBack size={'2em'} className="back" onClick={handleGoBack} />
-      </div>
+      </BackIcon>
       <Content>{props.children}</Content>
     </StyledBlogPostLayout>
   );
@@ -20,16 +21,24 @@ export const BlogPostLayout = (props) => {
 
 const StyledBlogPostLayout = styled.div`
   display: grid;
-  grid-template-columns: 10% 1fr;
+  grid-template-columns: 1fr;
   width: 100%;
 
-  & > div {
-    justify-self: center;
-    margin-top: 3em;
-  }
+  ${media.greaterThan('sm')`
+    grid-template-columns: 10% 1fr;
+    .back {
+        display: flex;
+    }
+  `};
+`;
+
+const BackIcon = styled.div`
+  justify-self: center;
+  margin-top: 3em;
+
   .back {
+    display: none;
     cursor: pointer;
-    display: flex;
     justify-content: center;
     padding: 0.5em;
     border-radius: 50%;
@@ -39,6 +48,12 @@ const StyledBlogPostLayout = styled.div`
       color: ${(props) => darken(0.4)(props.theme.colors.grey)};
     }
   }
+
+  ${media.greaterThan('sm')`
+    .back {
+        display: flex;
+    }
+  `};
 `;
 
 const Content = styled.div`

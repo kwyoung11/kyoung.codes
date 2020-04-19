@@ -1,53 +1,88 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Footer } from './Footer';
+import { SidebarLinks } from './SidebarLinks';
+import { media } from '../../../themes/styleHelpers';
 
 export const Sidebar: React.FC = () => (
   <StyledSidebar className="sidebar">
-    <img src="/img/kevin.png" />
-    <div className="blurb">
-      <p className="body2">I build great experiences. Contributor @netlify-cms. UMD CS '16</p>
-    </div>
-    <Footer />
+    <img className="photo" src="/img/kevin.png" />
+    <p className="description body2">
+      I build great experiences. Contributor @netlify-cms. UMD CS '16
+    </p>
+    <SidebarLinks />
   </StyledSidebar>
 );
 
-const StyledSidebar = styled.div`
+const StyledSidebar = styled.header`
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'photo' 'description';
   align-items: center;
   justify-items: center;
-  padding: 0 1em;
+  padding: 1rem 1em;
   position: relative;
 
-  img {
+  .photo {
+    grid-area: photo;
     border-radius: 50%;
-    max-width: 100%;
     height: 100px;
-    align-self: end;
   }
-
-  .blurb {
-    align-self: start;
+  .description {
+    grid-area: description;
     text-align: center;
-    margin: 0.5em 1.5em;
+    margin: 1em 1.5em;
     color: #454545;
     font-size: 1.15em;
-    p {
-      line-height: 1.45em;
-      letter-spacing: 0.2px;
-    }
+    line-height: 1.45em;
+    letter-spacing: 0.2px;
     width: 75%;
+  }
+  .links {
+    grid-area: links;
+    display: none;
   }
 
   &:after {
     position: absolute;
-    background: linear-gradient(180deg, #fff, #e6e6e6 25%, #e6e6e6 75%, #fff);
+    background: linear-gradient(90deg, #fff, #e6e6e6 25%, #e6e6e6 75%, #fff);
     content: '';
-    width: 0.0625rem;
-    height: 80%;
-    top: 10%;
-    right: 0px;
+    width: 80%;
+    height: 0.0625rem;
+    top: 100%;
+    left: 10%;
     bottom: 0;
   }
+
+  ${media.greaterThan('sm')`
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: 'photo description';
+  `};
+
+  ${media.greaterThan('md')`
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      'photo'
+      'description'
+      'links';
+    
+    .photo {
+        align-self: end;
+    }
+    .description {
+        align-self: start;
+    }
+    .links {
+        display: flex;
+    }
+    
+    &:after {
+      background: linear-gradient(180deg, #fff, #e6e6e6 25%, #e6e6e6 75%, #fff);
+      width: 0.0625rem;
+      height: 80%;
+      top: 10%;
+      left: 100%;
+    }
+  `};
 `;

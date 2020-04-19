@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { IoIosArrowRoundForward } from 'react-icons/io';
 
-export const Footer = () => (
-  <StyledFooter className="footer">
+export const SidebarLinks = () => (
+  <StyledFooter className="links">
     <Links>
       <a className="heading" href={'https://github.com/kwyoung11'}>
         Github

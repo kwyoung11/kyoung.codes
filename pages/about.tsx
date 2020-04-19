@@ -23,7 +23,8 @@ const About = (props) => {
 };
 
 const StyledAbout = styled.div`
-  max-width: 75%;
+  max-width: 800px;
+  padding: 0 1rem;
   .heading1 {
     padding-top: 0;
     margin-top: 0;

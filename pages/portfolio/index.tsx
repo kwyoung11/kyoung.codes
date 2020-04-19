@@ -6,6 +6,7 @@ import path from 'path';
 import ReactMarkdown from 'react-markdown';
 import { BlogPostLayout } from '../../src/components/Layout/BlogPost/BlogPostLayout';
 import Link from 'next/link';
+import { media } from '../../src/themes/styleHelpers';
 
 const PortfolioIndex = (props) => {
   const { portfolioEntries: entries } = props;
@@ -31,20 +32,23 @@ const PortfolioIndex = (props) => {
 
 const StyledPortfolioIndex = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
   gap: 1.5rem;
-  margin: 0 0 2rem 0;
+  margin: 0 2rem 2rem 2rem;
+
+  ${media.greaterThan('sm')`
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  `};
 `;
 const PortfolioCard = styled.div`
   border: 1px solid ${(props) => props.theme.colors.grey};
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 450px;
   padding: 2rem;
   img {
     max-width: 100%;
+    object-fit: contain;
   }
   .title {
     display: inline;
