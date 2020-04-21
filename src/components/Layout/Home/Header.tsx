@@ -2,14 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { media } from '../../../themes/styleHelpers';
+import { MyLink } from '../../Common/MyLink';
 
 export const Header = () => (
   <StyledHeader className="header">
     <Link href={'/portfolio'}>
-      <a className="heading">Portfolio</a>
+      <MyLink className="heading">Portfolio</MyLink>
     </Link>
     <Link href={'/about'}>
-      <a className="heading">About Me</a>
+      <MyLink className="heading">About Me</MyLink>
     </Link>
   </StyledHeader>
 );

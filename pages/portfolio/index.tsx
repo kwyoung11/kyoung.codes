@@ -7,6 +7,7 @@ import ReactMarkdown from 'react-markdown';
 import { BlogPostLayout } from '../../src/components/Layout/BlogPost/BlogPostLayout';
 import Link from 'next/link';
 import { media } from '../../src/themes/styleHelpers';
+import { MyLink } from '../../src/components/Common/MyLink';
 
 const PortfolioIndex = (props) => {
   const { portfolioEntries: entries } = props;
@@ -17,7 +18,9 @@ const PortfolioIndex = (props) => {
         {entries.map((pfe) => (
           <PortfolioCard>
             <Link href="/portfolio/[slug]" as={`/portfolio/${pfe.slug}`}>
-              <a className="heading title">{pfe.title}</a>
+              <MyLink className="title" noUnderline>
+                {pfe.title}
+              </MyLink>
             </Link>
             <img src={pfe.thumbnail} />
             <p className="body1">

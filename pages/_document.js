@@ -6,10 +6,13 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <link href="/prism.css" rel="stylesheet" />
+        </Head>
         <body>
           <Main />
           <NextScript />
+          <script src="/prism.js"></script>
         </body>
       </Html>
     );

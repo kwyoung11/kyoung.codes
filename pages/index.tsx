@@ -6,6 +6,7 @@ import { parseEntry, reformatDate } from '../src/util/helpers';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { media } from '../src/themes/styleHelpers';
+import { MyLink } from '../src/components/Common/MyLink';
 
 const Home = (props) => {
   const { config } = props;
@@ -17,7 +18,7 @@ const Home = (props) => {
           <div key={index}>
             <div className="date">{reformatDate(post.date)}</div>
             <Link href={'/blog/[slug]'} as={`/blog/${post.slug}`}>
-              <a>{post.title}</a>
+              <MyLink noUnderline>{post.title}</MyLink>
             </Link>
           </div>
         ))}

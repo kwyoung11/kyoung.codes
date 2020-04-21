@@ -1,22 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IoIosArrowRoundForward } from 'react-icons/io';
+import { MyLink } from '../../Common/MyLink';
 
 export const SidebarLinks = () => (
   <StyledFooter className="links">
     <Links>
-      <a className="heading" href={'https://github.com/kwyoung11'}>
+      <MyLink className="heading" href={'https://github.com/kwyoung11'}>
         Github
-      </a>
-      <a className="heading" href={'https://linkedin.com/in/kevwy'}>
+      </MyLink>
+      <MyLink className="heading" href={'https://linkedin.com/in/kevwy'}>
         Linkedin
-      </a>
+      </MyLink>
     </Links>
     <Source>
       Built with React and Next.js.{' '}
-      <a className="heading" href="https://github.com/kwyoung11/kyoung.codes">
+      <MyLink className="heading" href="https://github.com/kwyoung11/kyoung.codes">
         View Source <IoIosArrowRoundForward />{' '}
-      </a>
+      </MyLink>
     </Source>
   </StyledFooter>
 );
