@@ -1,0 +1,23 @@
+<svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100%"
+        viewBox="0 0 360 360"
+        preserveAspectRatio="xMidYMid meet"
+>
+    <path
+            d="M 0 26.833
+            C 60 8.944 120 0 180 0
+            s 120 8.944 180 26.833"
+            fill="#F6F6F6"
+            />
+    <path
+            d="
+            M 360 26.833
+            V 161
+            H 0
+            V 26.833
+            z"
+            fill="#F6F6F6"
+            stroke="#F6F6F6"
+    />
+</svg>
