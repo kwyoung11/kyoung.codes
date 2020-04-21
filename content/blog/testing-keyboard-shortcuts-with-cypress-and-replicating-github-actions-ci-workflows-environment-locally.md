@@ -15,7 +15,7 @@ cy.focused()
 
 So in a beforeEach hook, I just aliased it to the variable `selection:`
 
-```
+```javascript
 beforeEach(() => {
   [...]
   cy.focused()
@@ -37,7 +37,7 @@ To troubleshoot the issue, I wanted to be able to *roughly* replicate the CI env
 1. **['Unable to interpolate string' errors](https://github.com/nektos/act/issues/104)**: The parser used by `act` is not the same as the one used by Github Actions. The [node workflow in Netlify CMS](https://github.com/netlify/netlify-cms/blob/master/.github/workflows/nodejs.yml) uses hyphens in some of the variables. Act was throwing 'Unable to interpolate string' errors, causing the workflow to fail. The solution was to either change all hyphens to underscore if these hyphens were in your strategy and could be changed, or, if it was an third-party action, use the bracket property accessor notation `['hyphenated-property']` to avoid the error.
 2. [Expected RUNNER_TEMP to be defined](https://github.com/nektos/act/issues/159): I ran into another issue where the node.js setup action would fail with error message 'Expected RUNNER_TEMP to be defined'. This can be fixed by adding: 
 
-   ```
+   ```javascript
    env:
      RUNNER_TEMP: "/tmp/"
    ```
@@ -54,7 +54,7 @@ With that out of the way, I targeted my specific test with --spec and ran it. It
 
 Now I just added: 
 
-```
+```javascript
 const isMac = Cypress.platform === 'darwin';
 const modifierKey = isMac ? '{meta}' : '{ctrl}';
 ```
