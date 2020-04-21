@@ -23,7 +23,6 @@ const StyledBlogPostLayout = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
-
   ${media.greaterThan('sm')`
     grid-template-columns: 10% 1fr;
   `};

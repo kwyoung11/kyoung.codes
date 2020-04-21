@@ -5,12 +5,14 @@ import { BlogPostLayout } from '../../src/components/Layout/BlogPost/BlogPostLay
 import { parseEntry } from '../../src/util/helpers';
 import fs from 'fs';
 import { Post } from '../../src/components/Blog/Post';
+import { MetaPost } from '../../src/components/Blog/MetaPost';
 
 const PortfolioTemplate = (props) => {
   const { config, post } = props;
 
   return (
     <BlogPostLayout config={config}>
+      <MetaPost post={post} />
       <Post post={post} />
     </BlogPostLayout>
   );

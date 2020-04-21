@@ -11,41 +11,37 @@ collections:
     folder: "content/blog"
     preview_path: "blog/{{slug}}"
     create: true
-    fields: # The fields for each document, usually in front matter
+    fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Tags", name: "tags", widget: "relation", multiple: true, collection: "tags", searchFields: ["title"], valueField: "tag", displayFields: "title", required: false}
+      - {label: "Tags", name: "tags", widget: "relation", multiple: true, collection: "tags", searchFields: ["title"], valueField: "title", displayFields: "title", required: false}
   - name: "portfolio"
     label: "Portfolio"
     folder: "content/portfolio"
     preview_path: "portfolio/{{slug}}"
     create: true
-    fields: # The fields for each document, usually in front matter
+    fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Featured Image", name: "thumbnail", widget: "image", required: false}
       - {label: "Description", name: "description", widget: "markdown"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Link", name: "link", widget: "string"}
-      - {label: "Tags", name: "tags", widget: "relation", multiple: true, collection: "tags", searchFields: ["title"], valueField: "tag", displayFields: "title", required: false}
+      - {label: "Tags", name: "tags", widget: "relation", multiple: true, collection: "tags", searchFields: ["title"], valueField: "title", displayFields: "title", required: false}
   - name: "tags"
     label: "Tags"
     folder: "content/tags"
     create: true
-    fields: # The fields for each document, usually in front matter
+    fields:
       - {label: "Title", name: "title", widget: "string"}
-      - label: "Tags"
-        name: "tag"
-        widget: "object"
-        fields:
-          - {label: "Locale-specific tag", name: "localetag", widget: "list", fields: [{label: "Locale", name: "locale", widget: "select", options: ["en", "es"], default: ["en"]}, {label: "Name", name: "name", widget: "string"}]}
+      - {label: "Test", name: "test", widget: "string"}
   - name: "about"
     label: "About Me"
     folder: "content/about"
     preview_path: "about"
     create: true
-    fields: # The fields for each document, usually in front matter
+    fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Body", name: "body", widget: "markdown"}
