@@ -6,5 +6,6 @@ declare module 'styled-components' {
   export interface DefaultTheme extends ThemeInterface {
     colors: typeof theme.colors;
     fonts: typeof theme.fonts;
+    fontSizes: typeof theme.fontSizes;
   }
 }

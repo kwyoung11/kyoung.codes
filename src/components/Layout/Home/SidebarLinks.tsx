@@ -35,6 +35,7 @@ const Links = styled.div`
   justify-content: center;
   width: 100%;
   a {
+    font-size: ${(props) => props.theme.fontSizes.sm};
     margin: 0 20px;
     letter-spacing: 0.5px;
   }
@@ -45,14 +46,13 @@ const Source = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  font-size: 0.75rem;
+  font-size: ${(props) => props.theme.fontSizes.xs};
   color: ${(props) => props.theme.colors.grey};
   a {
     color: ${(props) => props.theme.colors.grey} !important;
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 0.75rem;
     margin: 0 20px;
     letter-spacing: 0.5px;
     transition: color 0.5s ease;

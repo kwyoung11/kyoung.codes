@@ -4,6 +4,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { MdImage } from './MdImage';
 import { reformatDate } from '../../util/helpers';
+import { lighten } from 'polished';
 
 export interface TagProps {
   name: string;
@@ -43,15 +44,13 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
 
   return (
     <BlogWrapper>
-      <Hero className="blog_hero">
-        {post.thumbnail ? <img src={`${post.thumbnail}`} alt={post.title} /> : null}
-      </Hero>
-      <BlogInfo className="blog__info">
-        <h3 className="heading1">{post.title}</h3>
-        <p className="subtitle1">{reformatDate(post.date)}</p>
+      <Hero>{post.thumbnail ? <img src={`${post.thumbnail}`} alt={post.title} /> : null}</Hero>
+      <BlogInfo>
+        <h1>{post.title}</h1>
+        <div className="small">{reformatDate(post.date)}</div>
       </BlogInfo>
-      <BlogBody className="blog__body">
-        <p className="body1">
+      <BlogBody>
+        <p>
           <ReactMarkdown
             source={post.content}
             renderers={{ image: MdImage }}
@@ -60,17 +59,15 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
           />
         </p>
       </BlogBody>
-      <BlogFooter className="blog__footer">{tags}</BlogFooter>
+      <BlogFooter>{tags}</BlogFooter>
     </BlogWrapper>
   );
 };
 
 const BlogWrapper = styled.article`
-  padding: 0em 0em 0em 0em;
-  .heading1 {
-    padding-top: 0;
-    margin-top: 0;
-  }
+  max-width: 812px;
+  margin: 0 auto;
+  padding: 0 1rem;
 `;
 
 const Hero = styled.figure`
@@ -86,33 +83,15 @@ const Hero = styled.figure`
 `;
 
 const BlogInfo = styled.div`
-  padding: 0rem 0rem;
   text-align: center;
-  h3 {
-    margin-bottom: 10px;
-  }
-  ul {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 0.25rem;
-    a {
-      font-size: 0.85em;
-      text-transform: uppercase;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+  h1 {
+    margin-top: 0;
   }
 `;
 
 const BlogBody = styled.div`
-  width: 100%;
-  padding: 0 1.25rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  max-width: 768px;
+  padding: 1rem 1.25rem;
+  font-size: ${(props) => props.theme.fontSizes.md};
 
   a {
     padding-bottom: 1.5rem;
@@ -122,24 +101,22 @@ const BlogBody = styled.div`
     margin-bottom: 0;
   }
 
-  h1 h2 h3 h4 h5 h6 p {
-    font-weight: normal;
+  code {
+    border-radius: 5px;
+    padding: 3px;
+    background-color: ${(props) => lighten(0.25)(props.theme.colors.grey)};
   }
 
-  p {
-    color: inherit;
+  pre {
+    font-size: 0.5em;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: ${(props) => lighten(0.25)(props.theme.colors.grey)};
+    overflow: hidden;
+    word-break: break-all;
+    overflow-x: scroll;
+    //border: 1px solid red;
   }
-
-  ul {
-    list-style: initial;
-  }
-
-  ul ol {
-    margin-left: 1.25rem;
-    margin-bottom: 1.25rem;
-    padding-left: 1.45rem;
-  }
-
   .markdown {
     img {
       width: 100%;

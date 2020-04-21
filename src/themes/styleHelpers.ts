@@ -38,7 +38,8 @@ export const responsiveMargin = css`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  body p {
+  html {
+    font-size: calc(1rem + 0.33vw);
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif;
   }
   html, body, #__next {
@@ -56,32 +57,16 @@ export const GlobalStyle = createGlobalStyle`
     }
   }
   
-  .heading1 {
-    font-size: 3em;
-    font-weight: bold;
-  }
-  
-  .heading2 {
-    font-size: 2.25em;
-    font-weight: bold;
-  }
-  
-  .body1 {
-    font-size: 1.25em;
+  p {
     letter-spacing: 0.3px;
-    line-height: 1.82rem;
+    line-height: 1.5em;
     -webkit-font-smoothing: antialiased;
     color: #222;
     text-rendering: optimizeLegibility;
   }
   
-  .body2 {
-    font-size: 1em;
-    letter-spacing: 0.3px;
-    line-height: 1.42rem;
-    -webkit-font-smoothing: antialiased;
-    color: #222;
-    text-rendering: optimizeLegibility;
+  .small {
+    font-size: 0.6em !important;
   }
   
   .subtitle1 {

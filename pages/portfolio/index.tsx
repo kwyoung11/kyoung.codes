@@ -53,7 +53,7 @@ const PortfolioCard = styled.div`
   .title {
     display: inline;
     text-align: center;
-    font-size: 3em;
+    font-size: ${(props) => props.theme.fontSizes.lg};
     margin-bottom: 1rem;
   }
   p {

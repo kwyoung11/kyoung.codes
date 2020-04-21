@@ -26,21 +26,19 @@ const StyledBlogPostLayout = styled.div`
 
   ${media.greaterThan('sm')`
     grid-template-columns: 10% 1fr;
-    .back {
-        display: flex;
-    }
   `};
 `;
 
 const BackIcon = styled.div`
   justify-self: center;
-  margin-top: 3em;
+  margin-top: 1rem;
 
   .back {
+    font-size: 0.6em;
     display: none;
     cursor: pointer;
     justify-content: center;
-    padding: 0.5em;
+    padding: 0.5rem;
     border-radius: 50%;
     color: ${(props) => darken(0.2)(props.theme.colors.grey)};
     background-color: ${(props) => lighten(0.25)(props.theme.colors.grey)};
@@ -50,6 +48,7 @@ const BackIcon = styled.div`
   }
 
   ${media.greaterThan('sm')`
+    margin-top: 3rem;
     .back {
         display: flex;
     }
@@ -57,5 +56,8 @@ const BackIcon = styled.div`
 `;
 
 const Content = styled.div`
-  margin-top: 3em;
+  margin-top: 1rem;
+  ${media.greaterThan('sm')`
+    margin-top: 3rem;
+  `};
 `;

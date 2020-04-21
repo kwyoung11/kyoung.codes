@@ -5,6 +5,7 @@ import fs from 'fs';
 import { parseEntry, reformatDate } from '../src/util/helpers';
 import Link from 'next/link';
 import styled from 'styled-components';
+import { media } from '../src/themes/styleHelpers';
 
 const Home = (props) => {
   const { config } = props;
@@ -54,12 +55,13 @@ const Blog = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 5em;
+  padding: 1rem;
+
   .date {
     color: ${(props) => props.theme.colors.grey};
     margin-bottom: 10px;
     text-transform: uppercase;
-    font-size: 0.8em;
+    font-size: ${(props) => props.theme.fontSizes.sm};
   }
   a {
     text-decoration: none;
@@ -67,9 +69,13 @@ const Blog = styled.div`
     display: inline-block;
     margin-bottom: 45px;
     width: auto;
-    font-size: 2em;
+    font-size: ${(props) => props.theme.fontSizes.lg};
     letter-spacing: 0.75px;
   }
+
+  ${media.greaterThan('sm')`
+      padding: 5rem;
+  `};
 `;
 
 export default Home;

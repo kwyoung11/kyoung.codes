@@ -19,18 +19,17 @@ const StyledHeader = styled.nav`
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 2rem 0;
-
-  // ${media.greaterThan('md')`
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   position: relative;
-  // `};
+  padding: 2rem 0rem;
 
   a {
-    margin: 0 20px;
+    font-size: ${(props) => props.theme.fontSizes.sm};
+    margin-right: 1.25rem;
     text-transform: uppercase;
     letter-spacing: 2px;
   }
+
+  ${media.greaterThan('md')`
+    justify-content: start;
+    padding: 2rem 5rem;
+  `};
 `;

@@ -6,9 +6,7 @@ import { media } from '../../../themes/styleHelpers';
 export const Sidebar: React.FC = () => (
   <StyledSidebar className="sidebar">
     <img className="photo" src="/img/kevin.png" />
-    <p className="description body2">
-      I build great experiences. Contributor @netlify-cms. UMD CS '16
-    </p>
+    <p className="description">I build great experiences. Contributor @netlify-cms. UMD CS '16</p>
     <SidebarLinks />
   </StyledSidebar>
 );
@@ -29,11 +27,12 @@ const StyledSidebar = styled.header`
     height: 100px;
   }
   .description {
+    font-size: ${(props) => props.theme.fontSizes.md};
     grid-area: description;
     text-align: center;
-    margin: 1em 1.5em;
+    margin: 1rem 1.5rem;
+    font-size: 1rem;
     color: #454545;
-    font-size: 1.15em;
     line-height: 1.45em;
     letter-spacing: 0.2px;
     width: 75%;
