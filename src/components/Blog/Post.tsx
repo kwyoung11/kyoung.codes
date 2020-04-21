@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { MdImage } from './MdImage';
 import { reformatDate } from '../../util/helpers';
 import { lighten } from 'polished';
+import { CodeBlock } from './CodeBlock';
 
 export interface TagProps {
   name: string;
@@ -53,7 +54,7 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
         <p>
           <ReactMarkdown
             source={post.content}
-            renderers={{ image: MdImage }}
+            renderers={{ image: MdImage, code: CodeBlock }}
             className="markdown"
             escapeHtml={false}
           />
@@ -102,19 +103,19 @@ const BlogBody = styled.div`
   }
 
   code {
-    border-radius: 5px;
-    padding: 3px;
-    background-color: ${(props) => lighten(0.25)(props.theme.colors.grey)};
+    // border-radius: 5px;
+    // padding: 3px;
+    // background-color: ${(props) => lighten(0.25)(props.theme.colors.grey)};
   }
 
   pre {
-    font-size: 0.5em;
-    border-radius: 5px;
-    padding: 5px;
-    background-color: ${(props) => lighten(0.25)(props.theme.colors.grey)};
-    overflow: hidden;
-    word-break: break-all;
-    overflow-x: scroll;
+    // font-size: 0.5em;
+    // border-radius: 5px;
+    // padding: 5px;
+    // background-color: ${(props) => lighten(0.25)(props.theme.colors.grey)};
+    // overflow: hidden;
+    // word-break: break-all;
+    // overflow-x: scroll;
     //border: 1px solid red;
   }
   .markdown {

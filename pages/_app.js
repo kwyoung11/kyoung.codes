@@ -1,9 +1,11 @@
 import App from 'next/app';
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Normalize } from 'styled-normalize'
+import { Normalize } from 'styled-normalize';
 import { GlobalStyle } from '../src/themes/styleHelpers';
-import {theme} from "../src/themes/primaryTheme";
+import { theme } from '../src/themes/primaryTheme';
+import '../public/prism/prism.css';
+import '../public/prism/prism-line-numbers.css';
 
 const MyApp = ({ Component, pageProps }) => {
   return (
