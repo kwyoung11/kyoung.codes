@@ -7,7 +7,7 @@ I recently [contributed a PR](https://github.com/netlify/netlify-cms/pull/3582) 
 
 One of the nice features of Cypress I used was [aliases](https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Sharing-Context). Each test I made had the same code:
 
-```
+```javascript
 cy.focused()
   .type('foo')
   .setSelection('foo');
@@ -15,7 +15,7 @@ cy.focused()
 
 So in a beforeEach hook, I just aliased it to the variable `selection:`
 
-```
+```javascript
 beforeEach(() => {
   [...]
   cy.focused()
@@ -37,7 +37,7 @@ To troubleshoot the issue, I wanted to be able to *roughly* replicate the CI env
 1. **['Unable to interpolate string' errors](https://github.com/nektos/act/issues/104)**: The parser used by `act` is not the same as the one used by Github Actions. The [node workflow in Netlify CMS](https://github.com/netlify/netlify-cms/blob/master/.github/workflows/nodejs.yml) uses hyphens in some of the variables. Act was throwing 'Unable to interpolate string' errors, causing the workflow to fail. The solution was to either change all hyphens to underscore if these hyphens were in your strategy and could be changed, or, if it was an third-party action, use the bracket property accessor notation `['hyphenated-property']` to avoid the error.
 2. [Expected RUNNER_TEMP to be defined](https://github.com/nektos/act/issues/159): I ran into another issue where the node.js setup action would fail with error message 'Expected RUNNER_TEMP to be defined'. This can be fixed by adding: 
 
-   ```
+   ```javascript
    env:
      RUNNER_TEMP: "/tmp/"
    ```
@@ -50,13 +50,11 @@ Cypress provides a repo with multiple Docker images for different versions of No
 
 You want to find an image that matches the OS you are trying to replicate and is compatible with your Node version. The one I used was `cypress/base:ubuntu18-node12.14.1`. If you need a specific browser other than Electron, you will need to pick an image from the browsers directory.
 
-
-
 With that out of the way, I targeted my specific test with --spec and ran it. It failed! I was able to replicate the issue from CI locally.
 
 Now I just added: 
 
-```
+```javascript
 const isMac = Cypress.platform === 'darwin';
 const modifierKey = isMac ? '{meta}' : '{ctrl}';
 ```
