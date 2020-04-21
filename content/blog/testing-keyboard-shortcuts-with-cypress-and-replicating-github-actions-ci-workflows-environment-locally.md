@@ -7,7 +7,7 @@ I recently [contributed a PR](https://github.com/netlify/netlify-cms/pull/3582) 
 
 One of the nice features of Cypress I used was [aliases](https://docs.cypress.io/guides/core-concepts/variables-and-aliases.html#Sharing-Context). Each test I made had the same code:
 
-```
+```javascript
 cy.focused()
   .type('foo')
   .setSelection('foo');
@@ -49,8 +49,6 @@ Finally, with those issues out of the way, I was able to pass the node set up ph
 Cypress provides a repo with multiple Docker images for different versions of Node and different browsers pre-installed here: <https://github.com/cypress-io/cypress-docker-images>.
 
 You want to find an image that matches the OS you are trying to replicate and is compatible with your Node version. The one I used was `cypress/base:ubuntu18-node12.14.1`. If you need a specific browser other than Electron, you will need to pick an image from the browsers directory.
-
-
 
 With that out of the way, I targeted my specific test with --spec and ran it. It failed! I was able to replicate the issue from CI locally.
 
