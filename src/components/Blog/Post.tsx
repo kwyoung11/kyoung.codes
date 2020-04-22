@@ -6,6 +6,7 @@ import { MdImage } from './MdImage';
 import { reformatDate } from '../../util/helpers';
 import { lighten } from 'polished';
 import { CodeBlock } from './CodeBlock';
+import { MetaPost } from './MetaPost';
 
 export interface TagProps {
   name: string;
@@ -18,6 +19,7 @@ export interface PostProps {
   slug: string;
   tags: TagProps[];
   thumbnail: string;
+  description?: string;
 }
 
 interface BlogPostProps {
@@ -47,28 +49,50 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
     <BlogWrapper>
       <Hero>{post.thumbnail ? <img src={`${post.thumbnail}`} alt={post.title} /> : null}</Hero>
       <BlogInfo>
-        <h1>{post.title}</h1>
-        <div className="small">{reformatDate(post.date)}</div>
+        <Empty></Empty>
+        <div>
+          <h1>{post.title}</h1>
+          <div className="small">{reformatDate(post.date)}</div>
+        </div>
       </BlogInfo>
-      <BlogBody>
-        <p>
-          <ReactMarkdown
-            source={post.content}
-            renderers={{ image: MdImage, code: CodeBlock }}
-            className="markdown"
-            escapeHtml={false}
-          />
-        </p>
-      </BlogBody>
+      <article>
+        <MetaPost post={post} />
+        <div>
+          <BlogBody>
+            {post.description ? (
+              <ReactMarkdown
+                source={post.description}
+                renderers={{ image: MdImage, code: CodeBlock }}
+                className="markdown"
+                escapeHtml={false}
+              />
+            ) : null}
+            <p>
+              <ReactMarkdown
+                source={post.content}
+                renderers={{ image: MdImage, code: CodeBlock }}
+                className="markdown"
+                escapeHtml={false}
+              />
+            </p>
+          </BlogBody>
+        </div>
+      </article>
       <BlogFooter>{tags}</BlogFooter>
     </BlogWrapper>
   );
 };
 
 const BlogWrapper = styled.article`
-  max-width: 812px;
+  max-width: 1024px;
   margin: 0 auto;
   padding: 0 1rem;
+
+  article {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    width: 100%;
+  }
 `;
 
 const Hero = styled.figure`
@@ -83,15 +107,24 @@ const Hero = styled.figure`
   }
 `;
 
+const Empty = styled.div`
+  flex: 0 1 200px;
+`;
+
 const BlogInfo = styled.div`
+  display: flex;
   text-align: center;
+  margin-bottom: 2rem;
+  & > div:nth-child(2) {
+    flex: 1 1 auto;
+  }
   h1 {
     margin-top: 0;
   }
 `;
 
 const BlogBody = styled.div`
-  padding: 1rem 1.25rem;
+  padding: 0rem 1.25rem 1rem 1.25rem;
   font-size: ${(props) => props.theme.fontSizes.md};
 
   a {
@@ -102,22 +135,10 @@ const BlogBody = styled.div`
     margin-bottom: 0;
   }
 
-  code {
-    // border-radius: 5px;
-    // padding: 3px;
-    // background-color: ${(props) => lighten(0.25)(props.theme.colors.grey)};
+  p:first-child {
+    margin-top: 0;
   }
 
-  pre {
-    // font-size: 0.5em;
-    // border-radius: 5px;
-    // padding: 5px;
-    // background-color: ${(props) => lighten(0.25)(props.theme.colors.grey)};
-    // overflow: hidden;
-    // word-break: break-all;
-    // overflow-x: scroll;
-    //border: 1px solid red;
-  }
   .markdown {
     img {
       width: 100%;
