@@ -6,5 +6,11 @@
 <url>
                 <loc>https://kyoung.codes/blog/how-schemaless-data-model-frameworks-can-speed-development</loc>
             </url>
+<url>
+                <loc>https://kyoung.codes/blog/responsive-layouts-with-css-grid</loc>
+            </url>
+<url>
+                <loc>https://kyoung.codes/blog/testing-keyboard-shortcuts-with-cypress-and-replicating-github-actions-ci-workflows-environment-locally</loc>
+            </url>
 
     </urlset>

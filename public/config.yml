@@ -28,12 +28,12 @@ collections:
       - label: Tags
         name: tags
         widget: relation
-        valueField: test
-        searchField:
-          - test
-        displayField: test
         multiple: true
         collection: tags
+        searchFields:
+          - title
+        valueField: title
+        displayFields: title
         required: false
   - name: portfolio
     label: Portfolio

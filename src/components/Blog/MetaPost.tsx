@@ -5,22 +5,40 @@ import { IoMdOpen } from 'react-icons/io';
 
 export const MetaPost = (props) => {
   const { post } = props;
+
+  const Link = () => {
+    if (post.link) {
+      return (
+        <div>
+          <a href={post.link}>
+            View Project <IoMdOpen />
+          </a>
+        </div>
+      );
+    } else return null;
+  };
+
+  const Tags = () => {
+    if (post.tags) {
+      return (
+        <StyledTags>
+          {post.tags.map((p) => (
+            <div>{p}</div>
+          ))}
+        </StyledTags>
+      );
+    } else return null;
+  };
+
   return (
     <StyledMetaPost>
-      <div>
-        <a href={post.link}>
-          View Project <IoMdOpen />
-        </a>
-      </div>
-      <Tags>
-        {post.tags.map((p) => (
-          <div>{p}</div>
-        ))}
-      </Tags>
+      <Link />
+      <Tags />
     </StyledMetaPost>
   );
 };
-const Tags = styled.div`
+
+const StyledTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
