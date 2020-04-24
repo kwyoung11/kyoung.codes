@@ -2,7 +2,13 @@
 title: Banking and Marketplace Web App
 date: 2020-04-17T06:10:04.206Z
 description: Led the front-end development of a banking and marketplace web application.
-link: t
+link: ""
+tags:
+  - React
+  - Redux
+  - Material UI
+  - Styled Components
+  - Typescript
 ---
 
 
