@@ -1,5 +1,5 @@
 import App from 'next/app';
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import { GlobalStyle } from '../src/themes/styleHelpers';

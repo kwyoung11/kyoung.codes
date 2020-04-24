@@ -6,7 +6,8 @@ import path from 'path';
 import { BlogPostLayout } from '../../src/components/Layout/BlogPost/BlogPostLayout';
 import Link from 'next/link';
 const cardCurve = require('../../src/assets/images/card-curve.svg');
-import { lighten, darken } from 'polished';
+import { darken } from 'polished';
+import { PortfolioThumb } from '../../src/components/Portfolio/PortfolioThumb';
 
 const PortfolioIndex = (props) => {
   const { portfolioEntries: entries } = props;
@@ -18,7 +19,7 @@ const PortfolioIndex = (props) => {
           <PortfolioCard>
             <Link href="/portfolio/[slug]" as={`/portfolio/${pfe.slug}`}>
               <a>
-                <Thumb thumb={pfe.thumbnail}></Thumb>
+                <PortfolioThumb pfe={pfe} />
                 <Description>
                   <h3 className="title">{pfe.title}</h3>
                 </Description>
@@ -38,16 +39,6 @@ const StyledPortfolioIndex = styled.div`
   gap: 2.5rem;
   margin: 0 2rem 2rem 2rem;
   justify-content: center;
-`;
-
-const Thumb = styled.div<{ thumb: string }>`
-  background-image: url(${(props) => props.thumb});
-  box-shadow: inset 0px -25px 10px #aaa;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 400px;
-  width: 100%;
 `;
 
 const Description = styled.div`
