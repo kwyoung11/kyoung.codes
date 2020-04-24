@@ -8,7 +8,7 @@ export const PortfolioThumb = ({ pfe }) => {
       <Thumb>
         <Picture
           webPImageUrl={require(`../../../public${pfe.thumbnail}?webp`)}
-          imageUrl={require(`../../../public${pfe.thumbnail}`)}
+          imageUrl={require(`../../../public${pfe.thumbnail}?trace`)}
         />
       </Thumb>
     );
