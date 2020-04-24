@@ -9,6 +9,11 @@ description: "RainSense is a SaaS app that allows anyone with a rain barrel to
   Interaction. I built the server and UI, which can be found here:
   <https://github.com/kwyoung11/RainBarrel>."
 link: http://rainsense.herokuapp.com
+tags:
+  - Ruby on Rails
+  - JQuery
+  - D3.js
+  - CSS
 ---
 The main goal of this project was to design a simple and intuitive user experience, due to the HCI focus of the class. Features of the app include:
 
