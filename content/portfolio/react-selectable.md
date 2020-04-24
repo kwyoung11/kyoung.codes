@@ -5,6 +5,9 @@ thumbnail: screen-shot-2019-03-19-at-1.53.47-am.png
 description: Enable rectangular selection for any element in React by wrapping
   it in a <Selectable> component.
 link: http://github.com/kwyoung11/react-selectable-simple
+tags:
+  - React
+  - Cypress
 ---
 #### Why I built this
 
