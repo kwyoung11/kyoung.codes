@@ -1,7 +1,7 @@
 ---
 title: WaterLog
 date: 2020-04-17T06:25:12.901Z
-thumbnail: /img/screen-shot-2019-03-06-at-12.06.43-pm.png
+thumbnail: screen-shot-2019-03-06-at-12.06.43-pm.png
 description: WaterLog provides an API for collecting environmental monitoring
   information from field devices, as well as a UI to render the data collected.
   WaterLog was written in node.js with an MVC architecture and custom-built

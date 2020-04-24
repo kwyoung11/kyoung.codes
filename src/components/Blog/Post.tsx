@@ -4,9 +4,9 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { MdImage } from './MdImage';
 import { reformatDate } from '../../util/helpers';
-import { lighten } from 'polished';
 import { CodeBlock } from './CodeBlock';
 import { MetaPost } from './MetaPost';
+import { Picture } from '../Picture';
 
 export interface TagProps {
   name: string;
@@ -47,7 +47,15 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
 
   return (
     <BlogWrapper>
-      <Hero>{post.thumbnail ? <img src={`${post.thumbnail}`} alt={post.title} /> : null}</Hero>
+      <Hero>
+        {post.thumbnail ? (
+          <Picture
+            imagePath={require(`../../assets/images/${post.thumbnail}?trace`)}
+            webPImagePath={require(`../../assets/images/${post.thumbnail}?webp`)}
+            alt={post.title}
+          />
+        ) : null}
+      </Hero>
       <BlogInfo>
         <Empty></Empty>
         <div>
@@ -83,10 +91,12 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
   );
 };
 
-const BlogWrapper = styled.article`
+const BlogWrapper = styled.div`
   max-width: 1024px;
   margin: 0 auto;
   padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
 
   article {
     display: grid;
@@ -95,16 +105,8 @@ const BlogWrapper = styled.article`
   }
 `;
 
-const Hero = styled.figure`
-  max-height: 750px;
-  width: 100%;
-  margin: 0;
-  overflow: hidden;
-
-  img {
-    margin-bottom: 50px;
-    max-width: 100%;
-  }
+const Hero = styled.div`
+  margin-bottom: 3rem;
 `;
 
 const Empty = styled.div`

@@ -5,7 +5,7 @@ import { media } from '../../../themes/styleHelpers';
 
 export const Sidebar: React.FC = () => (
   <StyledSidebar className="sidebar">
-    <img className="photo" src="/img/kevin.png" />
+    <img className="photo" src={require('../../../assets/images/kevin.png')} />
     <p className="description">I build great experiences. Contributor @netlify-cms. UMD CS '16</p>
     <SidebarLinks />
   </StyledSidebar>

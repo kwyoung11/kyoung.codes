@@ -60,6 +60,7 @@ collections:
       - label: Link
         name: link
         widget: string
+        required: false
       - label: Tags
         name: tags
         widget: relation
@@ -77,9 +78,6 @@ collections:
     fields:
       - label: Title
         name: title
-        widget: string
-      - label: Test
-        name: test
         widget: string
   - name: about
     label: About Me
