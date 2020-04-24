@@ -15,7 +15,7 @@ export const PortfolioThumb = ({ pfe }) => {
   } else {
     return (
       <Thumb>
-        <div>No image can be provided due to NDA</div>
+        <div className="no-image">No image can be provided due to NDA</div>
       </Thumb>
     );
   }
@@ -29,12 +29,15 @@ const Thumb = styled.div`
     height: 300px;
     width: 100%;
   }
+  .no-image {
+    background-color: ${(props) => props.theme.colors.black};
+    color: ${(props) => props.theme.colors.white};
+  }
+
   div {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: ${(props) => props.theme.colors.black};
-    color: ${(props) => props.theme.colors.white};
     height: 300px;
     width: 100%;
   }
