@@ -8,6 +8,13 @@ description: WaterLog provides an API for collecting environmental monitoring
   libraries for managing routing, dispatching, templating, view rendering, and
   database connections and queries.
 link: http://evh.herokuapp.com/devices/2
+tags:
+  - Node.js
+  - Arduino
+  - API
+  - Architecture/Design
+  - Custom Framework
+  - Mustache
 ---
 This project was completed as part of a university class CMSC435 Software Engineering, and the purpose was to gain real-world practice with larger-scale engineering projects. The general idea for the project was to make a low-cost alternative to measuring water quality in streams and rivers. Current USGS installations costed well into the thousands of dollars, but this device required $275 with a $6/month mobile data plan.
 
