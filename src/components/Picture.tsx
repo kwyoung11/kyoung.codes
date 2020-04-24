@@ -38,6 +38,8 @@ const PictureWrapper = styled.div`
 `;
 
 const TraceImg = styled.img<{ loaded: boolean }>`
+  width: 100%;
+  height: 100%;
   position: absolute;
   left: 0;
   top: 0;
@@ -48,6 +50,8 @@ const TraceImg = styled.img<{ loaded: boolean }>`
 `;
 
 const Img = styled.img`
+  width: 100%;
+  height: 100%;
   position: absolute;
   left: 0;
   top: 0;
