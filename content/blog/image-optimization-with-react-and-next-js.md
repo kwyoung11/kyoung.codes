@@ -4,13 +4,13 @@ date: 2020-04-25T19:57:55.878Z
 ---
 ## Step 1: Install required dependencies
 
-```
+```javascript
 yarn add next-compose-plugins next-optimized-images webp-loader image-trace-loader imagemin-gifsicle imagemin-mozjpeg imagemin-optipng imagemin-svgo -D
 ```
 
 ## Step 2: Add the Picture components class
 
-```
+```typescript
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
@@ -71,7 +71,6 @@ const Img = styled.img<React.HTMLAttributes<HTMLImageElement>>`
   top: 0;
   z-index: 1;
 `;
-
 ```
 
 ## Step 3: Set the `media_folder` property in your Netlify CMS config
@@ -80,13 +79,13 @@ If using Netlify CMS, set the media_folder property to a directory inside the so
 
 You will also want to remove the `public_folder` property if it is set. From the Netlify CMS docs:
 
-> While `media_folder `specifies where uploaded files are saved in the repo, `public_folder `indicates where they are found in the published site. Image `src `attributes use this path, which is relative to the file where it's called. For this reason, we usually start the path at the site root, using the opening`/`.
+> While `media_folder`specifies where uploaded files are saved in the repo, `public_folder`indicates where they are found in the published site. Image `src`attributes use this path, which is relative to the file where it's called. For this reason, we usually start the path at the site root, using the opening`/`.
 >
-> *If `public_folder `is not set, Netlify CMS defaults to the same value as `media_folder`, adding an opening`/`if one is not included.*
+> *If `public_folder`is not set, Netlify CMS defaults to the same value as `media_folder`, adding an opening`/`if one is not included.*
 
 Now, this means that you'll need to do a find and replace on the value of your image field when passing into the Picture component. I use the following helper in a `helpers.tsx` file under `src/util`: 
 
-```
+```javascript
 export const assetPath = (path) => {
   if (!path) {
     return undefined;
@@ -98,8 +97,61 @@ export const assetPath = (path) => {
 // <Picture imagePath={require(`../../assets/images${assetPath(imageSrc)}`)}
 ```
 
+This way assetPath returns the filename prepended with a / and then you can use relative imports as usual. Alternatively, [avoid relative imports altogether by using a webpack alias.](https://goenning.net/2017/07/21/how-to-avoid-relative-path-hell-javascript-typescript-projects/)
 
 
-This way assetPath just returns the filename prepended with a / and then you can use relative imports as usual. Alternatively, [avoid relative imports altogether by using a webpack alias.](https://goenning.net/2017/07/21/how-to-avoid-relative-path-hell-javascript-typescript-projects/)
 
-## Step 4: Replace all <img> tags with <Picture>
+## Step 4: Update next.config.js
+
+```javascript
+const path = require('path');
+const withPlugins = require('next-compose-plugins');
+const optimizedImages = require('next-optimized-images');
+
+const nextConfig = {
+  // your current next.config.js
+};
+
+module.exports = withPlugins([
+    [
+      optimizedImages,
+      {
+        inlineImageLimit: 8192,
+        imagesFolder: 'images',
+        imagesName: '[name]-[hash].[ext]',
+        handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
+        optimizeImages: true,
+        optimizeImagesInDev: false,
+        mozjpeg: {
+          quality: 80,
+        },
+        optipng: {
+          optimizationLevel: 3,
+        },
+        pngquant: false,
+        gifsicle: {
+          interlaced: true,
+          optimizationLevel: 3,
+        },
+        svgo: {
+          // enable/disable svgo plugins here
+        },
+        webp: {
+          preset: 'default',
+          quality: 75,
+        },
+      },
+    ],
+  // your other plugins here
+  ],
+  nextConfig
+);
+
+
+```
+
+
+
+Finally, replace all of your <img> tags with <Picture> tags, and you're all set!
+
+Note: If you have a large number of images, this will significantly increase you're first build time after making the change.
