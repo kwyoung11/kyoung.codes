@@ -1,10 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Picture } from '../Picture';
+import { assetPath } from '../../util/helpers';
 
 export const MdImage = (props) => {
+  const imagePath = assetPath(props.src);
   return (
     <ImageWrapper>
-      <img src={props.src} alt={props.alt} title={props.title} />
+      <Picture
+        imagePath={require(`../../assets/images${imagePath}?trace`)}
+        webPImagePath={require(`../../assets/images${imagePath}?webp`)}
+        alt={props.alt}
+        title={props.title}
+      />
       <div>{props.title ? <em>{props.title}</em> : null}</div>
     </ImageWrapper>
   );

@@ -1,15 +1,15 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
-interface PictureProps extends React.HTMLProps<HTMLImageElement> {
+interface PictureProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   webPImagePath: any;
   imagePath: any;
 }
 
-export const Picture: React.FC<PictureProps> = (props) => {
+export const Picture: React.FC<PictureProps> = (props: PictureProps) => {
   const { imagePath, webPImagePath, ...imgProps } = props;
   const [loaded, setLoaded] = useState(false);
-  const image = useRef();
+  const image: React.Ref<HTMLImageElement> = useRef();
 
   const handleLoaded = () => {
     if (!loaded) {
@@ -18,9 +18,7 @@ export const Picture: React.FC<PictureProps> = (props) => {
   };
 
   React.useEffect(() => {
-    const img = image.current;
-    // @ts-ignore
-    if (img && img.complete) {
+    if (image.current?.complete) {
       handleLoaded();
     }
   }, []);
@@ -31,7 +29,7 @@ export const Picture: React.FC<PictureProps> = (props) => {
       <picture>
         <source srcSet={webPImagePath} type="image/webp" />
         <source srcSet={imagePath.src} type="image/png" />
-        <Img src={imagePath.src} ref={image} onLoad={handleLoaded} />
+        <Img src={imagePath.src} ref={image} onLoad={handleLoaded} {...imgProps} />
       </picture>
     </PictureWrapper>
   );
@@ -52,7 +50,7 @@ const TraceImg = styled.img<{ loaded: boolean }>`
   opacity: ${(props) => (props.loaded ? 0 : 1)};
 `;
 
-const Img = styled.img<any>`
+const Img = styled.img<React.HTMLAttributes<HTMLImageElement>>`
   width: 100%;
   height: 100%;
   position: absolute;
