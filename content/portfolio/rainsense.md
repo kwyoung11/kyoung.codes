@@ -25,7 +25,7 @@ Below are some screenshots and videos from the app.
 
 This is the first page a user sees after logging in, and a user should be able to quickly learn the state of their rain barrel from the provided graphic.
 
-![The first page a user sees after logging in.](/src/assets/images/rainsense1.png "The first page a user sees after logging in.")
+![The first page a user sees after logging in.](/src/assets/images/screen-shot-2019-03-06-at-8.36.25-pm.png "The first page a user sees after logging in.")
 
 This is the Water Quality page that shows how the measurement variables are defined and the safe and unsafe value ranges for each variable. This page uses information hiding ("Click for instructions...") to avoid unnecessarily cluttering the page with potentially unneeded information:
 
