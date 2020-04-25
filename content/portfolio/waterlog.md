@@ -1,7 +1,7 @@
 ---
 title: WaterLog
 date: 2020-04-17T06:25:12.901Z
-thumbnail: screen-shot-2019-03-06-at-12.06.43-pm.png
+thumbnail: /src/assets/images/screen-shot-2019-03-06-at-12.06.43-pm.png
 description: WaterLog provides an API for collecting environmental monitoring
   information from field devices, as well as a UI to render the data collected.
   WaterLog was written in node.js with an MVC architecture and custom-built
@@ -22,4 +22,4 @@ I proposed the idea to my professor and teammates, and 16 people were assigned t
 
 Further detailed information is located at <http://evh.herokuapp.com/home/about>. You can also click the Go to Project link above to see the wireless data that we collected from our initial device deployment. The device lasted approximately 48 hours before it ran out of battery and stopped recording.
 
-![The device being deployed in the Northwest Branch Anacostia River, right next to USGS site # 01649500 (http://waterdata.usgs.gov/nwis/uv/?site_no=0164950), whose installation you can see just below the water. This was to be able to validate accuracy of the measurements.](/img/img_2127.jpg "The device being deployed in the Northwest Branch Anacostia River, right next to USGS site # 01649500 (http://waterdata.usgs.gov/nwis/uv/?site_no=0164950), whose installation you can see just below the water. This was to be able to validate accuracy of the measurements.")
+![The device being deployed in the Northwest Branch Anacostia River, right next to USGS site # 01649500 (http://waterdata.usgs.gov/nwis/uv/?site_no=0164950), whose installation you can see just below the water. This was to be able to validate accuracy of the measurements.](/src/assets/images/img_2127.jpg "The device being deployed in the Northwest Branch Anacostia River, right next to USGS site # 01649500 (http://waterdata.usgs.gov/nwis/uv/?site_no=0164950), whose installation you can see just below the water. This was to be able to validate accuracy of the measurements.")

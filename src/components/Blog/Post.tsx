@@ -3,10 +3,11 @@ import ReactMarkdown from 'react-markdown/with-html';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { MdImage } from './MdImage';
-import { reformatDate } from '../../util/helpers';
+import { assetPath, reformatDate } from '../../util/helpers';
 import { CodeBlock } from './CodeBlock';
 import { MetaPost } from './MetaPost';
 import { Picture } from '../Picture';
+import { BlockQuote } from './BlockQuote';
 
 export interface TagProps {
   name: string;
@@ -28,6 +29,7 @@ interface BlogPostProps {
 
 export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
   const { post } = props;
+  const imagePath = assetPath(post.thumbnail);
 
   const tags = () => {
     if (!post.tags) {
@@ -50,8 +52,8 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
       <Hero>
         {post.thumbnail ? (
           <Picture
-            imagePath={require(`../../assets/images/${post.thumbnail}?trace`)}
-            webPImagePath={require(`../../assets/images/${post.thumbnail}?webp`)}
+            imagePath={require(`../../assets/images${imagePath}?trace`)}
+            webPImagePath={require(`../../assets/images${imagePath}?webp`)}
             alt={post.title}
           />
         ) : null}
@@ -143,6 +145,9 @@ const BlogBody = styled.div`
 
   .markdown {
     img {
+      width: 100%;
+    }
+    video {
       width: 100%;
     }
   }

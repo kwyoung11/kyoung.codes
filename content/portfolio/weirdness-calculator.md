@@ -1,7 +1,7 @@
 ---
 title: Weirdness Calculator
 date: 2020-04-17T06:10:54.139Z
-thumbnail: screen-shot-2019-08-05-at-10.33.05-pm.png
+thumbnail: /src/assets/images/screen-shot-2019-08-05-at-10.33.05-pm.png
 description: A fun game where you search for and like GIFs from the Giphy API,
   and based on the "weirdness" of the GIF as calculated by Giphy, get assigned
   an overall "weirdness" score.

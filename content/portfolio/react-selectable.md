@@ -1,7 +1,7 @@
 ---
 title: React Selectable
 date: 2020-04-17T06:12:34.338Z
-thumbnail: screen-shot-2019-03-19-at-1.53.47-am.png
+thumbnail: /src/assets/images/screen-shot-2019-03-19-at-1.53.47-am.png
 description: Enable rectangular selection for any element in React by wrapping
   it in a <Selectable> component.
 link: http://github.com/kwyoung11/react-selectable-simple

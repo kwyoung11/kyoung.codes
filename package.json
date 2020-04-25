@@ -16,6 +16,7 @@
     "@types/styled-components": "^5.1.0",
     "babel-plugin-prismjs": "^2.0.1",
     "formik": "^2.1.4",
+    "fs-extra": "^9.0.0",
     "gray-matter": "^4.0.2",
     "image-trace-loader": "^1.0.2",
     "imagemin-gifsicle": "^7.0.0",

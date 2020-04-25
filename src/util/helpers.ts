@@ -11,3 +11,10 @@ export const reformatDate = (fullDate: any) => {
   const date = new Date(fullDate);
   return date.toDateString().slice(4);
 };
+
+export const assetPath = (path) => {
+  if (!path) {
+    return undefined;
+  }
+  return path.replace('/src/assets/images', '');
+};

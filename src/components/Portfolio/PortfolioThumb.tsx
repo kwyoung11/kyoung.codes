@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Picture } from '../Picture';
+import { assetPath } from '../../util/helpers';
 
 export const PortfolioThumb = ({ pfe }) => {
   if (pfe.thumbnail) {
+    const imagePath = assetPath(pfe.thumbnail);
     return (
       <Thumb>
         <Picture
-          webPImagePath={require(`../../assets/images/${pfe.thumbnail}?webp`)}
-          imagePath={require(`../../assets/images/${pfe.thumbnail}?trace`)}
+          webPImagePath={require(`../../assets/images${imagePath}?webp`)}
+          imagePath={require(`../../assets/images${imagePath}?trace`)}
         />
       </Thumb>
     );
