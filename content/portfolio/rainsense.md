@@ -1,7 +1,7 @@
 ---
 title: RainSense
 date: 2020-04-17T06:29:17.910Z
-thumbnail: /img/rainsense1.png
+thumbnail: /src/assets/images/screen-shot-2019-03-06-at-8.36.25-pm.png
 description: "RainSense is a SaaS app that allows anyone with a rain barrel to
   collect water quality information and send it to RainSense via its public API,
   then see the data in a beautiful visual display. It was built with Ruby on
@@ -25,7 +25,7 @@ Below are some screenshots and videos from the app.
 
 This is the first page a user sees after logging in, and a user should be able to quickly learn the state of their rain barrel from the provided graphic.
 
-![The first page a user sees after logging in.](/img/rainsense1.png "The first page a user sees after logging in.")
+![The first page a user sees after logging in.](/src/assets/images/screen-shot-2019-03-06-at-8.36.25-pm.png "The first page a user sees after logging in.")
 
 This is the Water Quality page that shows how the measurement variables are defined and the safe and unsafe value ranges for each variable. This page uses information hiding ("Click for instructions...") to avoid unnecessarily cluttering the page with potentially unneeded information:
 
