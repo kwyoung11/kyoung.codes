@@ -1,7 +1,7 @@
 ---
 title: RainSense
 date: 2020-04-17T06:29:17.910Z
-thumbnail: /src/assets/images/screen-shot-2019-03-06-at-8.36.25-pm.png
+thumbnail: /src/assets/images/pan-de-yuca.png
 description: "RainSense is a SaaS app that allows anyone with a rain barrel to
   collect water quality information and send it to RainSense via its public API,
   then see the data in a beautiful visual display. It was built with Ruby on
