@@ -97,9 +97,7 @@ export const assetPath = (path) => {
 // <Picture imagePath={require(`../../assets/images${assetPath(imageSrc)}`)}
 ```
 
-This way assetPath returns the filename prepended with a / and then you can use relative imports as usual. Alternatively, [avoid relative imports altogether by using a webpack alias.](https://goenning.net/2017/07/21/how-to-avoid-relative-path-hell-javascript-typescript-projects/)
-
-
+This way assetPath returns the filename prepended with a / and then you can use relative imports as usual. Alternatively, [avoid relative imports altogether by using a webpack alias](https://kyoung.codes/use-absolute-paths-with-your-es6-imports-with-this-webpack-config).
 
 ## Step 4: Update next.config.js
 
@@ -146,12 +144,8 @@ module.exports = withPlugins([
   ],
   nextConfig
 );
-
-
 ```
-
-
 
 Finally, replace all of your <img> tags with <Picture> tags, and you're all set!
 
-Note: If you have a large number of images, this will significantly increase you're first build time after making the change.
+Note: If you have a large number of images, this will significantly increase your first build time after making the change. However, subsequent builds will used the already cached version of the images and should be much quicker.
