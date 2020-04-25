@@ -29,7 +29,7 @@ This is the first page a user sees after logging in, and a user should be able t
 
 This is the Water Quality page that shows how the measurement variables are defined and the safe and unsafe value ranges for each variable. This page uses information hiding ("Click for instructions...") to avoid unnecessarily cluttering the page with potentially unneeded information:
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="oCli8Na"><a href="//imgur.com/oCli8Na"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<video class="fr-fvc fr-dvi fr-draggable" controls=""><source src="https://s3.amazonaws.com/kevinwyoung.me/oCli8Na+-+Imgur.mp4" type="video/mp4"></video>[](<>)
 
 This video shows a sped-up simulation of rising pH and water level in the rain barrel. The different views of the barrel include Water Usage ("WU"), Water Quality ("WQ") and Water Filter ("WF"). The views and their clickable circles are animated to provide a smooth user experience, and the contents of the clickable circle change based on view context to provide further information about the current status. The rising pH and water level eventually causes an in-app warning to display:
 
