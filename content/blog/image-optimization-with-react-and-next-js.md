@@ -2,7 +2,7 @@
 title: Image Optimization with React and Next.js
 date: 2020-04-25T19:57:55.878Z
 ---
-In this post, we are going to make use of the [`next-optimized-images`](https://github.com/cyrilwanner/next-optimized-images)package to compress images and convert them to next-gen formats such as webp at build time. This can drastically improve page load speed and as a result user experience.
+In this post, we are going to make use of the [`next-optimized-images`](https://github.com/cyrilwanner/next-optimized-images)package, as well as a Picture component I wrote in React, to compress images, convert them to next-gen formats such as webp, and render a placeholder image until the real image has loaded. This can drastically improve page load speed and the user experience on your website.
 
 ## Step 1: Install required dependencies
 
