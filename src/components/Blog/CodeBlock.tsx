@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import Prism from 'prismjs';
+import styled from 'styled-components';
 
 export const CodeBlock = (props) => {
   const code = useRef();
@@ -9,10 +10,14 @@ export const CodeBlock = (props) => {
   });
 
   return (
-    <pre className="language-markup line-numbers">
+    <StyledPre className="language-markup line-numbers">
       <code ref={code} className={`language-${props.language}`}>
         {props.value}
       </code>
-    </pre>
+    </StyledPre>
   );
 };
+
+const StyledPre = styled.pre`
+  overflow: auto !important;
+`;

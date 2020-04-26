@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { lighten, darken } from 'polished';
 import { IoMdOpen } from 'react-icons/io';
+import { media } from '../../themes/styleHelpers';
 
 export const MetaPost = (props) => {
   const { post } = props;
@@ -9,11 +10,11 @@ export const MetaPost = (props) => {
   const Link = () => {
     if (post.link) {
       return (
-        <div>
+        <StyledLink>
           <a href={post.link}>
-            View Project <IoMdOpen />
+            <span>View Project</span> <IoMdOpen />
           </a>
-        </div>
+        </StyledLink>
       );
     } else return null;
   };
@@ -30,18 +31,48 @@ export const MetaPost = (props) => {
     } else return null;
   };
 
+  if (!post.tags && !post.link) {
+    return null;
+  }
+
   return (
-    <StyledMetaPost>
+    <StyledMetaPost className="blog-meta">
       <Link />
       <Tags />
     </StyledMetaPost>
   );
 };
 
+const StyledLink = styled.div`
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: ${(props) => props.theme.colors.secondary};
+    margin-bottom: 1rem;
+    width: auto;
+    &:hover {
+      text-decoration: underline;
+    }
+    svg {
+      margin-left: 7px;
+      margin-top: 2px;
+    }
+  }
+  ${media.lessThan('lg')`
+      text-align: center;
+  `};
+`;
+
 const StyledTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  ${media.lessThan('lg')`
+      justify-content: center;
+  `};
   div {
     display: inline-block;
     border-radius: 5px;
@@ -60,18 +91,4 @@ const StyledTags = styled.div`
 const StyledMetaPost = styled.div`
   display: flex;
   flex-direction: column;
-  a {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: ${(props) => props.theme.colors.secondary};
-    margin-bottom: 1rem;
-    &:hover {
-      text-decoration: underline;
-    }
-    svg {
-      margin-left: 7px;
-      margin-top: 2px;
-    }
-  }
 `;

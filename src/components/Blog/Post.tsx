@@ -8,6 +8,8 @@ import { CodeBlock } from './CodeBlock';
 import { MetaPost } from './MetaPost';
 import { Picture } from '../Picture';
 import { BlockQuote } from './BlockQuote';
+import { media } from '../../themes/styleHelpers';
+import { InlineCodeBlock } from './InlineCodeBlock';
 
 export interface TagProps {
   name: string;
@@ -49,7 +51,7 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
 
   return (
     <BlogWrapper>
-      <Hero>
+      <Hero hasThumbnail={!!post.thumbnail}>
         {post.thumbnail ? (
           <Picture
             imagePath={require(`../../assets/images${imagePath}?trace`)}
@@ -61,32 +63,28 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
       <BlogInfo>
         <Empty></Empty>
         <div>
-          <h1>{post.title}</h1>
+          <h1 className="blog-title">{post.title}</h1>
           <div className="small">{reformatDate(post.date)}</div>
         </div>
       </BlogInfo>
       <article>
         <MetaPost post={post} />
-        <div>
-          <BlogBody>
-            {post.description ? (
-              <ReactMarkdown
-                source={post.description}
-                renderers={{ image: MdImage, code: CodeBlock }}
-                className="markdown"
-                escapeHtml={false}
-              />
-            ) : null}
-            <p>
-              <ReactMarkdown
-                source={post.content}
-                renderers={{ image: MdImage, code: CodeBlock }}
-                className="markdown"
-                escapeHtml={false}
-              />
-            </p>
-          </BlogBody>
-        </div>
+        <BlogBody className="blog-body">
+          {post.description ? (
+            <ReactMarkdown
+              source={post.description}
+              renderers={{ image: MdImage, code: CodeBlock, inlineCode: InlineCodeBlock }}
+              className="markdown"
+              escapeHtml={false}
+            />
+          ) : null}
+          <ReactMarkdown
+            source={post.content}
+            renderers={{ image: MdImage, code: CodeBlock, inlineCode: InlineCodeBlock }}
+            className="markdown"
+            escapeHtml={false}
+          />
+        </BlogBody>
       </article>
       <BlogFooter>{tags}</BlogFooter>
     </BlogWrapper>
@@ -95,24 +93,54 @@ export const Post: React.FC<BlogPostProps> = (props: BlogPostProps) => {
 
 const BlogWrapper = styled.div`
   max-width: 1024px;
-  margin: 0 auto;
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
-
+  position: relative;
+  //border: 1px solid red;
+  //& > * {
+  //  border: 1px solid red;
+  //}
   article {
     display: grid;
     grid-template-columns: 200px 1fr;
     width: 100%;
+    grid-template-areas: 'meta body';
+
+    .blog-body {
+      grid-area: body;
+    }
+    .blog-meta {
+      padding: 0rem 1.25rem 1rem 1.25rem;
+      grid-area: meta;
+    }
+    //border: 1px solid red;
+    //& > * {
+    //  border: 1px solid red;
+    //}
+    ${media.lessThan('lg')`
+      grid-template-columns: 1fr;
+      grid-template-areas: 
+        'meta' 
+        'body';
+      max-width: 1280px;
+      margin: 0 auto;
+      .blog-meta {
+        margin-bottom: 50px;
+      }
+  `};
   }
 `;
 
-const Hero = styled.div`
-  margin-bottom: 3rem;
+const Hero = styled.div<{ hasThumbnail: boolean }>`
+  margin-bottom: ${(props) => (props.hasThumbnail ? '3rem' : '0')};
 `;
 
 const Empty = styled.div`
   flex: 0 1 200px;
+  ${media.lessThan('lg')`
+    flex: 0 0 0;    
+  `};
 `;
 
 const BlogInfo = styled.div`
@@ -122,12 +150,13 @@ const BlogInfo = styled.div`
   & > div:nth-child(2) {
     flex: 1 1 auto;
   }
-  h1 {
+  .blog-title {
     margin-top: 0;
   }
 `;
 
 const BlogBody = styled.div`
+  overflow: hidden;
   padding: 0rem 1.25rem 1rem 1.25rem;
   font-size: ${(props) => props.theme.fontSizes.md};
 
