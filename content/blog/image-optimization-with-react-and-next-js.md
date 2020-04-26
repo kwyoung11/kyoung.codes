@@ -8,7 +8,9 @@ date: 2020-04-25T19:57:55.878Z
 yarn add next-compose-plugins next-optimized-images webp-loader image-trace-loader imagemin-gifsicle imagemin-mozjpeg imagemin-optipng imagemin-svgo -D
 ```
 
-## Step 2: Add the Picture components class
+## Step 2: Add the Picture component
+
+This component uses the HTML5 `<picture>` element to optimally render images in webp format and, if the browser does not support webp, fallback to png or jpg images. Additionally, it uses [`image-trace-loader`](https://github.com/EmilTholin/image-trace-loader) to first render *inline* a very lightweight svg outline of the original image as a placeholder. Once the original image has loaded, it uses the css `transition` property to create a smooth transition from the placeholder to the real image. This technique was inspired by [this codepen](https://twitter.com/mikaelainalem/status/918213244954861569).
 
 ```typescript
 import React, { useRef, useState } from 'react';
@@ -37,12 +39,18 @@ export const Picture: React.FC<PictureProps> = (props: PictureProps) => {
   }, []);
 
   return (
-    <PictureWrapper>
-      <TraceImg src={imagePath.trace} loaded={loaded} />
+    <PictureWrapper className="picture">
+      <TraceImg src={imagePath.trace} loaded={loaded} className="picture__trace" />
       <picture>
         <source srcSet={webPImagePath} type="image/webp" />
         <source srcSet={imagePath.src} type="image/png" />
-        <Img src={imagePath.src} ref={image} onLoad={handleLoaded} {...imgProps} />
+        <Img
+          src={imagePath.src}
+          ref={image}
+          onLoad={handleLoaded}
+          className="picture__img"
+          {...imgProps}
+        />
       </picture>
     </PictureWrapper>
   );
@@ -71,11 +79,12 @@ const Img = styled.img<React.HTMLAttributes<HTMLImageElement>>`
   top: 0;
   z-index: 1;
 `;
+
 ```
 
 ## Step 3: Set the `media_folder` property in your Netlify CMS config
 
-If using Netlify CMS, set the media_folder property to a directory inside the source of your application and not from the `public/` folder. This will give you shorter relative paths when requiring your images and ensure [things play well together](https://github.com/cyrilwanner/next-optimized-images/issues/130) with next-optimized-images. I set mine to `src/assets/images`, which I think is a good convention.
+If you are using Netlify CMS (if you are not, skip this step), set the media_folder property to a directory inside the source of your application and not from the `public/` folder. This will give you shorter relative paths when requiring your images and ensure [things play well together](https://github.com/cyrilwanner/next-optimized-images/issues/130) with next-optimized-images. I set mine to `src/assets/images`, which I think is a good convention.
 
 You will also want to remove the `public_folder` property if it is set. From the Netlify CMS docs:
 
@@ -148,4 +157,4 @@ module.exports = withPlugins([
 
 Finally, replace all of your <img> tags with <Picture> tags, and you're all set!
 
-Note: If you have a large number of images, this will significantly increase your first build time after making the change. However, subsequent builds will used the already cached version of the images and should be much quicker.
+> Note: If you have a large number of images, this will significantly increase the duration of your first build after making the change. However, subsequent builds will use the already cached version of the images and will be much quicker.
