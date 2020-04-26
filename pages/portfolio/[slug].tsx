@@ -1,8 +1,7 @@
 import React from 'react';
 import path from 'path';
-import jdown from 'jdown/dist';
 import { BlogPostLayout } from '../../src/components/Layout/BlogPost/BlogPostLayout';
-import { parseEntry } from '../../src/util/helpers';
+import { getStaticPathsHelper, parseEntry } from '../../src/util/helpers';
 import fs from 'fs';
 import { Post } from '../../src/components/Blog/Post';
 
@@ -32,21 +31,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const routes = [];
-  const portfolioPosts = await jdown('./content/portfolio');
-
-  // add each blog to the routes obj
-  Object.entries(portfolioPosts).forEach(([filename, fileContent]) => {
-    const filen = filename.replace(/([a-z][A-Z])/g, function (g) {
-      return g[0] + '-' + g[1].toLowerCase();
-    });
-    routes.push({ params: { slug: filen } });
-  });
-
-  return {
-    paths: routes,
-    fallback: false,
-  };
+  return getStaticPathsHelper('content/portfolio', path, fs);
 }
 
 export default PortfolioTemplate;

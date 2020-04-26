@@ -18,3 +18,18 @@ export const assetPath = (path) => {
   }
   return path.replace('/src/assets/images', '');
 };
+
+export const getStaticPathsHelper = (directory, path, fs) => {
+  const routes = [];
+  const dir = path.join(process.cwd(), directory);
+  const dirEntries = fs.readdirSync(dir);
+  dirEntries.forEach((filename) => {
+    const filenameWithoutExt = filename.slice(0, filename.length - 3);
+    routes.push({ params: { slug: filenameWithoutExt } });
+  });
+
+  return {
+    paths: routes,
+    fallback: false,
+  };
+};

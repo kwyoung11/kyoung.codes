@@ -23,7 +23,6 @@
     "imagemin-mozjpeg": "^8.0.0",
     "imagemin-optipng": "^7.1.0",
     "imagemin-svgo": "^7.1.0",
-    "jdown": "^1.0.3",
     "js-yaml": "latest",
     "netlify-cms": "^2.10.45",
     "netlify-cms-app": "^2.12.9",
