@@ -2,6 +2,8 @@
 title: Image Optimization with React and Next.js
 date: 2020-04-25T19:57:55.878Z
 ---
+In this post, we are going to make use of the [`next-optimized-images`](https://github.com/cyrilwanner/next-optimized-images)package to compress images and convert them to next-gen formats such as webp at build time. This can drastically improve page load speed and as a result user experience.
+
 ## Step 1: Install required dependencies
 
 ```javascript
@@ -122,32 +124,6 @@ const nextConfig = {
 module.exports = withPlugins([
     [
       optimizedImages,
-      {
-        inlineImageLimit: 8192,
-        imagesFolder: 'images',
-        imagesName: '[name]-[hash].[ext]',
-        handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
-        optimizeImages: true,
-        optimizeImagesInDev: false,
-        mozjpeg: {
-          quality: 80,
-        },
-        optipng: {
-          optimizationLevel: 3,
-        },
-        pngquant: false,
-        gifsicle: {
-          interlaced: true,
-          optimizationLevel: 3,
-        },
-        svgo: {
-          // enable/disable svgo plugins here
-        },
-        webp: {
-          preset: 'default',
-          quality: 75,
-        },
-      },
     ],
   // your other plugins here
   ],
