@@ -1,26 +1,16 @@
-const jdown = require('jdown');
 const fs = require('fs');
-
-const formatDate = (date) => {
-  const offset = date.getTimezoneOffset();
-  date = new Date(date.getTime() + offset * 60 * 1000);
-  return date.toISOString().split('T')[0];
-};
+const path = require('path');
 
 const exportPathMap = async () => {
   const routes = {
     '/': { page: '/' },
   };
 
-  // get all .md files in the content/blog dir
-  const blogPosts = await jdown('./content/blog');
-
-  // add each blog to the routes
-  Object.entries(blogPosts).forEach(([filename, fileContent]) => {
-    const filen = filename.replace(/([a-z][A-Z])/g, function (g) {
-      return g[0] + '-' + g[1].toLowerCase();
-    });
-    routes[`/blog/${filen}`] = { page: '/blog/[slug]', query: { slug: filen, ...fileContent } };
+  const dir = path.join(process.cwd(), 'content/blog');
+  const dirEntries = fs.readdirSync(dir);
+  dirEntries.forEach((filename) => {
+    const filenameWithoutExt = filename.slice(0, filename.length - 3);
+    routes[`/blog/${filenameWithoutExt}`] = { page: '/blog/[slug]', query: { slug: filenameWithoutExt } };
   });
 
   return routes;
@@ -33,9 +23,6 @@ const createSitemap = (routes) => `<?xml version="1.0" encoding="UTF-8"?>
             if (data.page === 'blog/[slug]') {
               return `<url>
                 <loc>${`https://kyoung.codes${path}`}</loc>
-                <image:image>
-                  <image:loc>https://kyoung.codes${data.query.thumbnail}</image:loc>
-                </image:image>
             </url>\n`;
             }
             return `<url>

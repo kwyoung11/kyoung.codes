@@ -7,10 +7,16 @@
                 <loc>https://kyoung.codes/blog/how-schemaless-data-model-frameworks-can-speed-development</loc>
             </url>
 <url>
+                <loc>https://kyoung.codes/blog/image-optimization-with-react-and-next-js</loc>
+            </url>
+<url>
                 <loc>https://kyoung.codes/blog/responsive-layouts-with-css-grid</loc>
             </url>
 <url>
                 <loc>https://kyoung.codes/blog/testing-keyboard-shortcuts-with-cypress-and-replicating-github-actions-ci-workflows-environment-locally</loc>
+            </url>
+<url>
+                <loc>https://kyoung.codes/blog/use-absolute-paths-with-your-es6-imports-with-this-webpack-config</loc>
             </url>
 
     </urlset>
